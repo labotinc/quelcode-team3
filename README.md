@@ -2,4 +2,84 @@
 
 ## データベース設計書
 
-https://docs.google.com/spreadsheets/d/1iS_xmn1OPb5RTcZd8bSaPfaV3HbR5Z9JKJ0sbBQGWU4/edit?usp=sharing
+- https://docs.google.com/spreadsheets/d/1iS_xmn1OPb5RTcZd8bSaPfaV3HbR5Z9JKJ0sbBQGWU4/edit?usp=sharing
+
+## セットアップ手順
+
+1. php コンテナのユーザ ID をホスト側と合わせるためのファイル .env を作成する
+
+   1. どこでもよいのでコマンドラインで下記のコマンドを実行する
+
+      ```
+      id -u
+      ```
+
+   1. docker-compose.yml があるディレクトリで、下記のコマンドの 1000 の値を id -u で調べた値に書き換えて実行する
+
+      ```
+      # 1000 の値を id -u で調べた値に書き換えて実行する
+      echo DOCKER_UID=1000 > .env
+      ```
+
+   - docker-compose.yml があるディレクトリに .env ファイルが作成されたら成功
+
+     ```
+     # .env は隠しファイルなので ls -a で視認できる
+     ls -a
+     .  ..  .env  .git  .gitignore  README.md  docker  docker-compose.yml  html
+     ```
+
+   - Linux ではユーザ ID が異なるとコンテナで作成したファイルをホスト側で編集できなくなる
+   - Mac はユーザ権限が独特なためユーザ ID を一致させる必要はないとの説もある
+   - Windows の人は WSL (Windows Subsystem for Linux) を使おう
+
+1. docker-compose.yml があるディレクトリで下記のコマンドを実行する。初回起動には時間がかかる
+
+   ```
+   docker-compose up -d
+   ```
+
+   - 下記のようなメッセージが出たら成功
+
+     ```
+     Creating network "quelcode-cakephp_default" with the default driver
+     Creating quelcode-cakephp_phpmyadmin_1 ... done
+     Creating quelcode-cakephp_nginx_1      ... done
+     Creating quelcode-cakephp_mysql_1      ... done
+     Creating quelcode-cakephp_php_1        ... done
+     ```
+
+1. 起動中の php コンテナの bash を実行する
+
+   ```
+   docker-compose exec php bash
+   ```
+
+   - 下記のようなプロンプトに切り替われば成功
+
+     ```
+     docker@df8275e6f1f9:/var/www/html$
+     ```
+
+   - VSCode の Docker 拡張でも同じことができる。
+     左側の Docker アイコンをクリック → "CONTAINERS"の php コンテナを右クリック → "Attach Shell"で php コンテナの bash が開きます。
+
+1. php コンテナの bash で cakephp を install する
+
+   1. php コンテナの bash で /var/www/html/movieReserveApp に移動する
+
+   1. composer install を実行する
+
+      ```
+      docker@e6e656dc2f0d:/var/www/html/movieReserveApp$ composer install
+      ```
+
+      - こちらも時間がかかる。質問プロンプトが出たら Y と回答する
+
+        ```
+        Set Folder Permissions ? (Default to Y) [Y,n]? Y
+        ```
+
+1. cakephp アプリをブラウザで表示する
+
+   - http://localhost:10080 にアクセスして cakephp の赤いページが表示されたらセットアップ成功
