@@ -4,6 +4,14 @@
 
 - https://docs.google.com/spreadsheets/d/1iS_xmn1OPb5RTcZd8bSaPfaV3HbR5Z9JKJ0sbBQGWU4/edit?usp=sharing
 
+## 基本設計書
+
+- https://docs.google.com/presentation/d/1OlSldFi90NO4Dgj5oVf8I0hpwKZUeE_MxHd-8r4FFro/edit#slide=id.p
+
+## JIRA
+
+- https://quelcode-teamdev.atlassian.net/secure/BrowseProjects.jspa
+
 ## セットアップ手順
 
 1. php コンテナのユーザ ID をホスト側と合わせるためのファイル .env を作成する
