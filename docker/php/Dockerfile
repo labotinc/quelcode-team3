@@ -21,8 +21,8 @@ RUN apt-get update \
   && docker-php-ext-install pdo_mysql intl mbstring
 
 # ユーザ作成
-RUN useradd -m --uid ${DOCKER_UID} --groups sudo ${DOCKER_USER} \
-  && echo ${DOCKER_USER}:${DOCKER_PASSWORD} | chpasswd
+RUN useradd -m ${DOCKER_USER} -u ${DOCKER_UID}
+RUN echo "${DOCKER_USER}:${DOCKER_PASSWORD}" | chpasswd
 
 # 作成したユーザのサブグループにsudoを追加する
 RUN usermod -aG sudo ${DOCKER_USER}

@@ -88,6 +88,46 @@
         Set Folder Permissions ? (Default to Y) [Y,n]? Y
         ```
 
+1. config/app.php を編集する
+
+   ```
+   'App' => [
+
+      ~~~~~
+
+      'defaultTimezone' = env('APP_DEFAULT_TIMEZONE', 'Asia/Tokyo'),
+
+      ~~~~~
+
+      ]
+
+   ```
+
+   ```
+   'Datasources' => [
+      'default => [
+
+         ~~~~~~
+
+         'host' => 'mysql',
+
+         ~~~~~~
+
+         'username' => 'docker_db_user',
+         'password' => 'docker_db_user_pass',
+         'database' => 'docker_db',
+
+         ~~~~~~
+
+         'timezone' => 'Asia/Tokyo',
+
+         ~~~~~~
+
+      ]
+   ]
+
+   ```
+
 1. cakephp アプリをブラウザで表示する
 
    - http://localhost:10080 にアクセスして cakephp の赤いページが表示されたらセットアップ成功
