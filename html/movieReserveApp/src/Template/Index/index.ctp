@@ -13,7 +13,7 @@
     </div>
   </div>
   
-  <div style="text-align:center">
+  <div class="dots">
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>

@@ -13,6 +13,9 @@ h2 {
   margin: 0 0 24px 7px;
   padding: 5px 8px;
 }
+.dots {
+  text-align:center
+}
 .movie_pics {
   display: flex;
   list-style: none;
