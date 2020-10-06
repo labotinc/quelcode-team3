@@ -1,15 +1,15 @@
 <main class="wrapper">
   <div class="slideshow-container">
     <div class="mySlides fade">
-      <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.13.13@2x.png', ['style' => 'width:100%']); ?>
+      <?= $this->Html->image('movies_slideshow/2020-05-22 16.13.13@2x.png', ['style' => 'width:100%']); ?>
     </div>
     
     <div class="mySlides fade">
-      <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.19.57@2x.png', ['style' => 'width:100%']); ?>
+      <?= $this->Html->image('movies_slideshow/2020-05-22 16.19.57@2x.png', ['style' => 'width:100%']); ?>
     </div>
     
     <div class="mySlides fade">
-      <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.27.06@2x.png', ['style' => 'width:100%']); ?>
+      <?= $this->Html->image('movies_slideshow/2020-05-22 16.27.06@2x.png', ['style' => 'width:100%']); ?>
     </div>
   </div>
   
@@ -22,9 +22,9 @@
   <section>
     <h2>上映映画一覧</h2>
       <ul class="movie_pics">
-        <li><?php echo $this->Html->image("movies/2020-05-22 16.13.13.png"); ?></li>
-        <li><?php echo $this->Html->image("movies/2020-05-22 16.19.57.png"); ?></li>
-        <li><?php echo $this->Html->image("movies/2020-05-22 16.27.06.png"); ?></li>
+        <li><?= $this->Html->image("movies/2020-05-22 16.13.13.png"); ?></li>
+        <li><?= $this->Html->image("movies/2020-05-22 16.19.57.png"); ?></li>
+        <li><?= $this->Html->image("movies/2020-05-22 16.27.06.png"); ?></li>
       </ul>
       <p class="details_button"><a href="#">詳しく見る</a></p>
   </section>
