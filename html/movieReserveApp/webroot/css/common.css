@@ -24,9 +24,6 @@ main {
 .wrapper {
   max-width: 1920px;
 }
-.logo {
-  white-space: nowrap;
-}
 .logo-1 {
   color: #FFB100;
   margin-right: 4px;
