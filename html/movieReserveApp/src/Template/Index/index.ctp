@@ -26,7 +26,7 @@
         <li><?= $this->Html->image("movies/2020-05-22 16.19.57.png"); ?></li>
         <li><?= $this->Html->image("movies/2020-05-22 16.27.06.png"); ?></li>
       </ul>
-      <p class="details_button"><a href="#">詳しく見る</a></p>
+    <p class="details_button"><a href="#">詳しく見る</a></p>
   </section>
 
   <section>
