@@ -1,22 +1,22 @@
 <main class="wrapper">
   <div class="slideshow-container">
     <div class="mySlides fade">
-     <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.13.13@2x.png', ['style' => 'width:100%']); ?> 
+      <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.13.13@2x.png', ['style' => 'width:100%']); ?>
     </div>
     
     <div class="mySlides fade">
-     <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.19.57@2x.png', ['style' => 'width:100%']); ?> 
+      <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.19.57@2x.png', ['style' => 'width:100%']); ?>
     </div>
     
     <div class="mySlides fade">
-     <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.27.06@2x.png', ['style' => 'width:100%']); ?> 
+      <?php echo $this->Html->image('movies_slideshow/2020-05-22 16.27.06@2x.png', ['style' => 'width:100%']); ?>
     </div>
   </div>
   
   <div style="text-align:center">
-    <span class="dot"></span> 
-    <span class="dot"></span> 
-    <span class="dot"></span> 
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
 
   <section>
