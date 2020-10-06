@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+section {
+  width: 1088px;
+  margin: 80px auto 0;
+}
+h2 {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 1.28px;
+  color: #242424;
+  border-left: 8px solid #FFB100;
+  margin: 0 0 24px 7px;
+  padding: 5px 8px;
+}
+.movie_pics {
+  display: flex;
+  list-style: none;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+.movie_pics img {
+  margin: 0px;
+  padding: 0px;
+}
+.details_button {
+  font-size: 16px;
+  background: #F5AE0B;
+  font-weight: bold;
+  margin: 0 auto;
+  width: 336px;
+  text-align: center;
+  box-shadow: 0px 2px 2px #00000015;
+  border: 3px solid #F5AE0B;
+}
+.details_button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  height: 48px;
+  color: #fff;
+}
