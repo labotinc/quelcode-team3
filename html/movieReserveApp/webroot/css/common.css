@@ -12,7 +12,7 @@ a {
 img {
   max-width: 100%;
 }
-.page-header {
+.page-header, .page-footer {
   display: flex;
   background: #262626;
   padding: 0px 140px;
@@ -74,9 +74,6 @@ h1, h3, .main-nav, .bottom-nav {
 .login_button a:hover {
   background-color: #FFB100;
   border: 1px solid #FFB100;
-}
-.page-header h3 {
-  margin-top: 76px;
 }
 .bottom-nav {
   display: flex;

@@ -28,7 +28,7 @@
 
   <?php echo $this->fetch('content') ?>
 
-  <footer class="page-header wrapper">
+  <footer class="page-footer wrapper">
     <h3 class="logo-2">QUEL CINNEMAS</h3>
     <ul class="bottom-nav">
       <li><a href="#">トップ</a></li>
