@@ -1,0 +1,44 @@
+body {
+  background-color: #EBEBEB;
+}
+section {
+  text-align: center;
+}
+section > h1 {
+  letter-spacing: 0.89px;
+  font-size: 25px;
+  color: #707070;
+  margin-bottom: 36px;
+}
+.form-wrapper {
+  margin: 0 auto;
+  padding-top: 118px;
+  padding-bottom: 88px;
+  background-color: #fff;
+  width: 736px;
+}
+fieldset {
+  border: none;
+}
+input {
+  width: 336px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  opacity: .3;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+}
+.password_check {
+  margin-bottom: 80px;
+}
+.submission-btn {
+  border: 3px solid #f5ae0b;
+  box-shadow: 0px 2px 2px #00000015;
+  background-color: #F5AE0B;
+  text-decoration: none;
+  color: #FFFFFF;
+  padding: 16px 135px;
+  opacity: 1;
+  margin-bottom: 0;
+}
