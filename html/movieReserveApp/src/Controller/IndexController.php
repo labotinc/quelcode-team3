@@ -6,7 +6,6 @@ use App\Controller\AppController;
 class IndexController extends AppController {
 
   public function initialize() {
-    $this->viewBuilder()->setLayout('index');
   }
 
   public function index() {
