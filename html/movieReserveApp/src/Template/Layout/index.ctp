@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <header class="page-header wrapper">
+  <header class="page-header">
     <h1 class="logo"><a href=""><span class="logo-1">QUEL</span><span class="logo-2">CINNEMAS</span></a></h1>
     <nav>
       <ul class="main-nav">
@@ -28,7 +28,7 @@
 
   <?php echo $this->fetch('content') ?>
 
-  <footer class="page-footer wrapper">
+  <footer class="page-footer">
     <h3 class="logo-2">QUEL CINNEMAS</h3>
     <ul class="bottom-nav">
       <li><a href="#">トップ</a></li>
