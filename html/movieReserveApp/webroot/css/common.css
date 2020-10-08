@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 html {
@@ -45,7 +46,7 @@ h1, h3, .main-nav, .bottom-nav {
   padding: 28px 32px;
 }
 .main-nav li a:hover {
-  color: #FFB100;
+  background-color: #6c6b6b;
 }
 .login_button {
   font-size: 16px;
@@ -65,8 +66,7 @@ h1, h3, .main-nav, .bottom-nav {
   width: 128px;
 }
 .login_button a:hover {
-  background-color: #FFB100;
-  border: 1px solid #FFB100;
+  background-color: #6c6b6b;
 }
 .bottom-nav {
   display: flex;
@@ -86,3 +86,4 @@ h1, h3, .main-nav, .bottom-nav {
 .bottom-nav li:last-child {
   border-right: none; 
 }
+
