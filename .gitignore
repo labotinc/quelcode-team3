@@ -3,3 +3,4 @@ phpmyadmin
 .devcontainer/*
 .env
 .vscode
+schema-dump-default.lock
