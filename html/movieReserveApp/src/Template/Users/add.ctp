@@ -1,28 +1,43 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Credit Cards'), ['controller' => 'CreditCards', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Credit Card'), ['controller' => 'CreditCards', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Reservations'), ['controller' => 'Reservations', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Reservation'), ['controller' => 'Reservations', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Add User') ?></legend>
+<main>
+  <section>
+    <h1>会員登録</h1>
+    <div class="form-wrapper">
+      <?=
+        $this->Form->create($user, [
+          'type' => 'post',
+          'url' => ['controller' => 'Users', 'action' => 'add'],
+          'novalidate' => true
+        ]);
+      ?>
+      <fieldset>
         <?php
-            echo $this->Form->control('email');
-            echo $this->Form->control('password');
+        echo $this->Form->control('email', [
+          'type' => 'email',
+          'placeholder' => 'メールアドレス',
+          'required' => false,
+          'label' => false
+        ]);
+        echo $this->Form->control('password', [
+          'type' => 'password',
+          'placeholder' => 'パスワード',
+          'required' => false,
+          'label' => false
+        ]);
+        echo $this->Form->control('password_check', [
+          'type' => 'password',
+          'placeholder' => 'パスワード（確認用）',
+          'required' => false,
+          'label' => false,
+          'class' => 'password_check'
+        ]);
         ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+      </fieldset>
+      <?php
+      echo $this->Form->submit(__('会員登録'), [
+        'class' => 'submission-btn'
+      ]);
+      echo $this->Form->end();
+      ?>
+    </div>
+  </section>
+</main>
