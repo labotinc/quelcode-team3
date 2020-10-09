@@ -1,38 +1,45 @@
 body {
   background-color: #EBEBEB;
 }
-section {
+li {
+  list-style: none;
+}
+.join-main {
   text-align: center;
 }
-section > h1 {
+.join-main > h1 {
   letter-spacing: 0.89px;
   font-size: 25px;
   color: #707070;
   margin-bottom: 36px;
 }
-.form-wrapper {
+.join-form-wrapper {
   margin: 0 auto;
   padding-top: 118px;
   padding-bottom: 88px;
   background-color: #fff;
   width: 736px;
 }
-fieldset {
+.join-fieldset {
   border: none;
 }
-input {
+.join-fieldset input {
   width: 336px;
   padding: 10px;
-  border: none;
   border-bottom: 1px solid #000;
   opacity: .3;
   margin-bottom: 60px;
   box-sizing: border-box;
 }
-.password_check {
+.join-fieldset .password_check {
   margin-bottom: 80px;
 }
-.submission-btn {
+.join-fieldset .error-message {
+  margin-top: -53px;
+  margin-bottom: 41px;
+  color: #F46161;
+}
+.join-submission-btn {
   border: 3px solid #f5ae0b;
   box-shadow: 0px 2px 2px #00000015;
   background-color: #F5AE0B;
