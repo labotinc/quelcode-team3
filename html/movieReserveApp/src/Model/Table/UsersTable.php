@@ -25,67 +25,71 @@ use Cake\Validation\Validator;
  */
 class UsersTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config)
-    {
-        parent::initialize($config);
+  /**
+   * Initialize method
+   *
+   * @param array $config The configuration for the Table.
+   * @return void
+   */
+  public function initialize(array $config)
+  {
+      parent::initialize($config);
 
-        $this->setTable('users');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+      $this->setTable('users');
+      $this->setDisplayField('id');
+      $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
+      $this->addBehavior('Timestamp');
 
-        $this->hasMany('CreditCards', [
-            'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('Reservations', [
-            'foreignKey' => 'user_id',
-        ]);
-    }
+      $this->hasMany('CreditCards', [
+          'foreignKey' => 'user_id',
+      ]);
+      $this->hasMany('Reservations', [
+          'foreignKey' => 'user_id',
+      ]);
+  }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', null, 'create');
+  /**
+   * Default validation rules.
+   *
+   * @param \Cake\Validation\Validator $validator Validator instance.
+   * @return \Cake\Validation\Validator
+   */
+  public function validationDefault(Validator $validator)
+  {
+      $validator
+          ->integer('id')
+          ->allowEmptyString('id', null, 'create');
 
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+      $validator
+          ->email('email', false, 'メールアドレスが間違っているようです')
+          ->requirePresence('email', 'create')
+          ->notEmptyString('email', '空白になっています');
 
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+      $validator
+          ->scalar('password')
+          ->lengthBetween('password', [4, 13], 'パスワードは4文字以上、13文字以内にしてください')
+          ->alphaNumeric('password', 'パスワードに使えない文字が入力されています')
+          ->requirePresence('password', 'create')
+          ->notEmptyString('password', '空白になっています');
 
-        return $validator;
-    }
+      $validator
+          ->sameAs('password_check', 'password', 'パスワードが一致していません');
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->isUnique(['email']));
+      return $validator;
+  }
 
-        return $rules;
-    }
+  /**
+   * Returns a rules checker object that will be used for validating
+   * application integrity.
+   *
+   * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+   * @return \Cake\ORM\RulesChecker
+   */
+  public function buildRules(RulesChecker $rules)
+  {
+      $rules->add($rules->isUnique(['email'], 'メーアドレスは既に使用されています'));
+
+      return $rules;
+  }
 }
