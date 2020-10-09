@@ -60,3 +60,32 @@ li {
   opacity: 1;
   margin-bottom: 0;
 }
+.welcome-wrapper {
+  margin: 0 auto;
+  width: 736px;
+  background-color: #fff;
+  padding-top: 121px;
+  padding-bottom: 136px;
+  text-align: center;
+}
+.welcome-wrapper > h1 {
+  font-size: 25px;
+  color: #707070;
+  margin-bottom: 30px;
+}
+.welcome-wrapper > p {
+  font-size: 14px;
+  color: #707070;
+  line-height: 24px;
+  margin-bottom: 50px;
+}
+.welcome-wrapper > a {
+  background-color: #F5AE0B;
+  font-size: 16px;
+  letter-spacing: .44px;
+  box-shadow: 0px 3px 6px #00000036;
+  border: 3px solid #F5AE0B;
+  padding: 16px 119px;
+  color: #FFF;
+  display: inline-block;
+}
