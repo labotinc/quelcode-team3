@@ -4,14 +4,14 @@ body {
 li {
   list-style: none;
 }
-.join-main > h1 {
+.signup-main > h1 {
   letter-spacing: 0.89px;
   font-size: 25px;
   color: #707070;
   margin-bottom: 36px;
   text-align: center;
 }
-.join-form-wrapper {
+.signup-form-wrapper {
   margin: 0 auto;
   padding-top: 118px;
   padding-bottom: 88px;
@@ -22,35 +22,35 @@ li {
   width: 336px;
   margin: 0 auto;
 }
-.join-fieldset {
+.signup-fieldset {
   border: none;
 }
-.join-fieldset input {
+.signup-fieldset input {
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #000;
   opacity: .3;
   box-sizing: border-box;
 }
-.join-fieldset input {
+.signup-fieldset input {
   margin-bottom: 60px;
 }
-.join-fieldset .error input {
+.signup-fieldset .error input {
   margin-bottom: 8px;
 }
-.join-fieldset .error {
+.signup-fieldset .error {
   margin-bottom: 41px;
 }
-.join-fieldset .error:last-child {
+.signup-fieldset .error:last-child {
   margin-bottom: 61px;
 }
-.join-fieldset .password_check {
+.signup-fieldset .password_check {
   margin-bottom: 80px;
 }
-.join-fieldset .error-message {
+.signup-fieldset .error-message {
   color: #F46161;
 }
-.join-submission-btn {
+.signup-submission-btn {
   border: 3px solid #f5ae0b;
   box-shadow: 0px 2px 2px #00000015;
   background-color: #F5AE0B;

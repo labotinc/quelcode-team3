@@ -1,7 +1,7 @@
 <main>
-  <section class="join-main">
+  <section class="signup-main">
     <h1>会員登録</h1>
-    <div class="join-form-wrapper">
+    <div class="signup-form-wrapper">
       <?=
         $this->Form->create($user, [
           'type' => 'post',
@@ -10,7 +10,7 @@
           'class' => 'signup-form'
         ]);
       ?>
-      <fieldset class="join-fieldset">
+      <fieldset class="signup-fieldset">
         <?php
         echo $this->Form->control('email', [
           'type' => 'email',
@@ -35,7 +35,7 @@
       </fieldset>
       <?php
       echo $this->Form->submit(__('会員登録'), [
-        'class' => 'join-submission-btn'
+        'class' => 'signup-submission-btn'
       ]);
       echo $this->Form->end();
       ?>
