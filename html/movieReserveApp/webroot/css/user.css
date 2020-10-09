@@ -4,6 +4,7 @@ body {
 li {
   list-style: none;
 }
+/* 会員登録画面 */
 .signup-main > h1 {
   letter-spacing: 0.89px;
   font-size: 25px;
@@ -60,6 +61,9 @@ li {
   opacity: 1;
   margin-bottom: 0;
 }
+/* 会員登録画面おわり */
+
+/* 会員登録完了画面 */
 .welcome-wrapper {
   margin: 0 auto;
   width: 736px;
@@ -89,3 +93,4 @@ li {
   color: #FFF;
   display: inline-block;
 }
+/* 会員登録完了画面おわり */
