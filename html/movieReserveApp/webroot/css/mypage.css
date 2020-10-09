@@ -1,0 +1,57 @@
+.mypage-top-container{
+  text-align: center;
+  color: #707070;
+}
+
+.mypage-top-header{
+  margin: 0 0 36px 0;
+  font-size: 25px;
+  font-weight: 600;
+  color: #707070;
+  border: none;
+}
+
+.mypage-top-table-container{
+  display: flex;
+  padding: 110px 0;
+  margin: 0 auto 27px auto;
+  box-shadow: 0px 0px 6px #00000029;
+  justify-content: center;
+  background-color: #FFF;
+  max-width: 736px;
+}
+
+.mypage-top-table{
+  width: 356px;
+  border-collapse: collapse;
+}
+
+.mypage-top-table th{
+  padding-bottom: 37px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.mypage-top-table td{
+  text-align: right;
+  padding-bottom: 40px;
+}
+
+.mypage-top-link-button a{
+  background-color: #F5AE0B;
+  padding : 8px 16px;
+  box-shadow:  0px 2px 2px #00000014;
+  font-size: 15px;
+  color: #FFF;
+}
+
+.mypage-top-link-button a:active{
+  box-shadow: 0px 2px 6px #00000056;
+}
+
+.mypage-top-account-delete-link a{
+  font-size: 14px;
+  color: #707070;
+  letter-spacing: 0.5px;
+  text-decoration: underline;
+}
