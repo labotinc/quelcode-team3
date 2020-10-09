@@ -74,7 +74,8 @@ class UsersTable extends Table
           ->notEmptyString('password', '空白になっています');
 
       $validator
-          ->sameAs('password_check', 'password', 'パスワードが一致していません');
+          ->sameAs('password_check', 'password', 'パスワードが一致していません')
+          ->notEmptyString('password_check', '空白になっています');
 
       return $validator;
   }

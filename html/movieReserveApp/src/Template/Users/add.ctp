@@ -6,7 +6,8 @@
         $this->Form->create($user, [
           'type' => 'post',
           'url' => ['controller' => 'Users', 'action' => 'add'],
-          'novalidate' => true
+          'novalidate' => true,
+          'class' => 'signup-form'
         ]);
       ?>
       <fieldset class="join-fieldset">
