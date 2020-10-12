@@ -29,9 +29,11 @@ li {
 .signup-fieldset input {
   width: 100%;
   padding: 10px;
-  border-bottom: 1px solid #000;
-  opacity: .3;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
+}
+.signup-fieldset input::placeholder {
+  opacity: 0.3;
 }
 .signup-fieldset input {
   margin-bottom: 60px;
