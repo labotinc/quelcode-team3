@@ -12,6 +12,12 @@
 
 - https://quelcode-teamdev.atlassian.net/secure/BrowseProjects.jspa
 
+## チームのルール
+
+1. チームの朝会は、9時からのQUELCODEの朝会が終わり次第discordの会議室Aで行う。
+
+2. レビュー依頼を出す際は、slack上にてレビュワーにメンションを飛ばす。
+
 ## セットアップ手順
 
 1. php コンテナのユーザ ID をホスト側と合わせるためのファイル .env を作成する
