@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Http\Exception\UnauthorizedException;
 
 /**
  * Users Controller
@@ -17,6 +19,11 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
     public function index()
     {
         $users = $this->paginate($this->Users);
@@ -84,6 +91,21 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $a = $this->request->getData();
+            var_dump($a);
+            $user = $this->Auth->identify();
+            var_dump($user);
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->Auth->redirectUrl();
+            } else {
+                throw new UnauthorizedException('メールアドレスかパスワードが間違っています');
+            }
+        }
+    }
     /**
      * Delete method
      *
