@@ -70,6 +70,7 @@ class UsersTable extends Table
           ->scalar('password')
           ->lengthBetween('password', [4, 13], 'パスワードは4文字以上、13文字以内にしてください')
           ->ascii('password', 'パスワードに使えない文字が入力されています')
+          ->alphaNumeric('password','パスワードに使えない文字が入力されています')
           ->requirePresence('password', 'create')
           ->notEmptyString('password', '空白になっています');
 
@@ -77,6 +78,7 @@ class UsersTable extends Table
           ->sameAs('password_check', 'password', 'パスワードが一致していません')
           ->notEmptyString('password_check', '空白になっています')
           ->ascii('password_check', 'パスワードに使えない文字が入力されています')
+          ->alphaNumeric('password_check','パスワードに使えない文字が入力されています')
           ->lengthBetween('password_check', [4, 13], 'パスワードは4文字以上、13文字以内にしてください');
 
       return $validator;
