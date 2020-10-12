@@ -62,20 +62,22 @@ class UsersTable extends Table
           ->allowEmptyString('id', null, 'create');
 
       $validator
-          ->email('email', false, '正しい形式のメールアドレスを入力してください。')
+          ->email('email', false, 'メールアドレスが間違っているようです')
           ->requirePresence('email', 'create')
-          ->notEmptyString('email', '空白になっています。');
+          ->notEmptyString('email', '空白になっています');
 
       $validator
           ->scalar('password')
-          ->lengthBetween('password', [4, 13], 'パスワードは4文字以上、13文字以内にしてください。')
-          ->ascii('password', 'パスワードは半角英数で入力してください。')
+          ->lengthBetween('password', [4, 13], 'パスワードは4文字以上、13文字以内にしてください')
+          ->ascii('password', 'パスワードに使えない文字が入力されています')
           ->requirePresence('password', 'create')
-          ->notEmptyString('password', '空白になっています。');
+          ->notEmptyString('password', '空白になっています');
 
       $validator
-          ->sameAs('password_check', 'password', 'パスワードが一致していません。')
-          ->notEmptyString('password_check', 'パスワードが一致していません。');
+          ->sameAs('password_check', 'password', 'パスワードが一致していません')
+          ->notEmptyString('password_check', '空白になっています')
+          ->ascii('password_check', 'パスワードに使えない文字が入力されています')
+          ->lengthBetween('password_check', [4, 13], 'パスワードは4文字以上、13文字以内にしてください');
 
       return $validator;
   }
