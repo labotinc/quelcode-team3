@@ -1,15 +1,16 @@
 <main>
-  <section>
+  <section class="signup-main">
     <h1>会員登録</h1>
-    <div class="form-wrapper">
+    <div class="signup-form-wrapper">
       <?=
         $this->Form->create($user, [
           'type' => 'post',
           'url' => ['controller' => 'Users', 'action' => 'add'],
-          'novalidate' => true
+          'novalidate' => true,
+          'class' => 'signup-form'
         ]);
       ?>
-      <fieldset>
+      <fieldset class="signup-fieldset">
         <?php
         echo $this->Form->control('email', [
           'type' => 'email',
@@ -34,7 +35,7 @@
       </fieldset>
       <?php
       echo $this->Form->submit(__('会員登録'), [
-        'class' => 'submission-btn'
+        'class' => 'signup-submission-btn'
       ]);
       echo $this->Form->end();
       ?>
