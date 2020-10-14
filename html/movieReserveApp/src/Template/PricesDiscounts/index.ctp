@@ -1,7 +1,7 @@
 <main>
   <div class="prices-discounts-wrapper">
-    <h1>基本料金</h1>
     <div class="regular-prices-wrapper">
+      <h1 class="regular-prices">基本料金</h1>
       <?php foreach ($regular_prices as $regular_price) : ?>
         <div class="regular-price">
           <p><?= htmlspecialchars($regular_price->customer_type) ?></p>
@@ -9,12 +9,14 @@
         </div>
       <?php endforeach; ?>
     </div>
-    <h1>お得な割引サービス</h1>
     <div class="discounts-wrapper">
+      <h1 class="discounts">お得な割引サービス</h1>
       <div class="discount">
-        <h2>複数人予約割引</h2>
         <div>
-          <p>同じ映画を３名以上で鑑賞すると入場料が1200円</p>
+          <h2>複数人予約割引</h2>
+          <p class="discount-details">同じ映画を３名以上で鑑賞すると入場料が1200円</p>
+        </div>
+        <div class="discounted-price">
           <p>0,000円</p>
         </div>
       </div>
