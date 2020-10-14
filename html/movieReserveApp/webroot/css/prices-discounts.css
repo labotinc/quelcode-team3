@@ -1,0 +1,28 @@
+.prices-discounts-wrapper {
+  margin-left: 416px;
+}
+.prices-discounts-wrapper > h1 {
+  margin-bottom: 18px;
+  border-left: 8px solid #ADADAD;
+  padding-left: 8px;
+}
+.regular-prices-wrapper {
+  margin-bottom: 72px;
+}
+.regular-price {
+  width: 528px;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  margin-bottom: 18px;
+}
+.regular-price > p {
+  font-size: 14px;
+  letter-spacing: 1.12px;
+}
+.discount h2 {
+  font-size: 14px;
+  border: none;
+  padding: 0;
+}
