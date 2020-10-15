@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Http\Exception\UnauthorizedException;
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\Event\Event;
 
 /**
@@ -109,6 +110,9 @@ class UsersController extends BaseController
     {
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
+            // var_dump($user);
+            // var_dump($this->request->getData('login_password'));
+            // var_dump((new DefaultPasswordHasher)->hash($this->request->getData('login_password')));
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
