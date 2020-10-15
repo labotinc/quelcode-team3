@@ -18,7 +18,7 @@ class BaseController extends AppController
             'authorize' => ['Controller'],
             'authenticate' => [
                 'Form' => [
-                    'fields' => [
+                    'fields' => ['userModel' => 'Users',
                         'username' => 'email',
                         'password' => 'password'
                     ]
@@ -38,7 +38,7 @@ class BaseController extends AppController
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['add']);
+        $this->Auth->allow(['add','login']);
     }
 
     public function isAuthorized($user)
