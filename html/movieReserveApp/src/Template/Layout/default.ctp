@@ -12,6 +12,7 @@
     echo $this->Html->css('slideshow.css');
     echo $this->Html->css('mypage.css');
     echo $this->Html->css('schedule.css');
+    echo $this->Html->css('user.css');
   ?>
 </head>
 
