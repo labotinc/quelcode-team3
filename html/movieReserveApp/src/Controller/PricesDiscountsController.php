@@ -18,6 +18,7 @@ class PricesDiscountsController extends AppController
   public function initialize()
   {
     $this->loadModel('RegularPrices');
+    $this->loadModel('Discounts');
   }
   public function index()
   {
@@ -25,10 +26,13 @@ class PricesDiscountsController extends AppController
     $login = 'ログイン';
 
     $regular_prices = $this->RegularPrices->find('all', [
-      'conditions'=>['is_invalid' === 0],
+      'conditions'=>['is_invalid'=>false],
       'order'=>['price'=>('desc')]
     ]);
-    $this->set(compact('title', 'login', 'regular_prices'));
+    $discounts = $this->Discounts->find('all', [
+      'conditions'=>['is_invalid'=>false],
+    ]);
+    $this->set(compact('title', 'login', 'regular_prices', 'discounts'));
   }
 
 }
