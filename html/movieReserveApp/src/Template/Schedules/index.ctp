@@ -2,13 +2,13 @@
   <section class="schedule-section-1">
     <h2 class="schedule-h2-1">上映スケジュール</h2>
     <ul class="schedule-dates">
-      <a href="#" class="current-day"><li>00月00日(月)</li></a>
-      <a href="#"><li>00月00日(月)</li></a>
+      <li><a href="#" class="current-day">00月00日(月)</a></li>
+      <li><a href="#">00月00日(月)</a></li>
       <li><span class="css-br"><a href="#">00月00日(月)</a></span><a href="#" class="discount-day">レディースデイ</a></li>
-      <a href="#"><li>00月00日(月)</li></a>
-      <a href="#"><li>00月00日(月)</li></a>
-      <a href="#"><li>00月00日(月)</li></a>
-      <a href="#"><li>00月00日(月)</li></a>
+      <li><a href="#">00月00日(月)</a></li>
+      <li><a href="#">00月00日(月)</a></li>
+      <li><a href="#">00月00日(月)</a></li>
+      <li><a href="#">00月00日(月)</a></li>
     </ul>
   </section>
 

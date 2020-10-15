@@ -34,6 +34,7 @@ main {
 }
 .schedule-dates li {
 	border-right: 0.5px solid #fff;
+	display: grid;
 }
 .schedule-dates li:last-child {
 	border-right: none;
