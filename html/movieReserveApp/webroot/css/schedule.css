@@ -9,7 +9,8 @@ main {
 .schedule-section-2 {
 	margin: 0 auto;
 }
-.schedule-h2-1, .schedule-h2-2 {
+.schedule-h2-1,
+.schedule-h2-2 {
 	border-left: unset;
 	margin: 0 0 16px;
 	padding: unset;
