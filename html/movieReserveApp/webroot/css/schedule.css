@@ -90,13 +90,13 @@ a.discount-day {
 .schedule-movie-end {
 	font-size: 14px;
 }
-.reserve-button {
+.schedule-reserve-button {
   font-size: 17px;
 	font-weight: bold;
 	letter-spacing: 1.36px;
 	background-color: #D0CECE;
 }
-.reserve-button a {
+.schedule-reserve-button a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ a.discount-day {
   color: #707070;
   width: 128px;
 }
-.reserve-button a:hover {
+.schedule-reserve-button a:hover {
   background-color: #e1e1e1;
 }
 .schedule-each {
