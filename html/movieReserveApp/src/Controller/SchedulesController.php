@@ -25,6 +25,11 @@ class SchedulesController extends AppController
         $schedules = $this->paginate($this->Schedules);
 
         $this->set(compact('schedules'));
+
+        $title = 'QUEL CINNEMAS';
+        $login = 'ログイン';
+
+        $this->set(compact('title', 'login'));
     }
 
     /**
