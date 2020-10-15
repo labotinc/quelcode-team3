@@ -28,7 +28,6 @@ class SchedulesController extends AppController
 
         $title = 'QUEL CINNEMAS';
         $login = 'ログイン';
-
         $this->set(compact('title', 'login'));
     }
 
