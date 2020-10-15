@@ -23,18 +23,33 @@ main {
 	font-size: 14px;
 	list-style: none;
 	background-color: #7B7B7B;
-	justify-content: space-around;
+	justify-content: space-between;
+}
+.schedule-dates a {
+	border-right: 0.5px solid #fff;
+	color: #fff;
+	display: block;
+	padding: 12px 32px 12px 32px;
 }
 .schedule-dates li {
 	border-right: 0.5px solid #fff;
 }
-.schedule-dates a{
-	color: #fff;
-	display: block;
-	padding: 10px 32px;
-}
 .schedule-dates li:last-child {
 	border-right: none;
+}
+.schedule-dates a:last-child {
+	border-right: none;
+}
+.current-day {
+	background-color: #EFA600;
+}
+.css-br::after {
+	white-space: pre;
+}
+a.discount-day {
+	padding: 0px 20px 24px 20px;
+	text-align: center;
+	font-size: 12px;
 }
 .schedule-details {
 	background-color: #D5D5D5;
