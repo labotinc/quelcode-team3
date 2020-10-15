@@ -28,25 +28,25 @@
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
       </ul>
     </div>
@@ -65,25 +65,25 @@
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
       </ul>
    </div>
@@ -102,25 +102,25 @@
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
       </ul>
     </div>
@@ -139,25 +139,25 @@
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
         <li>
           <p class="schedule-screen-time">
             <span class="schedule-movie-start">00:00</span><span class="schedule-movie-end">〜00:00</span>
           </p>
-          <p class="reserve_button"><a href="#">予約購入</a></p>
+          <p class="reserve-button "><a href="#">予約購入</a></p>
         </li>
       </ul>
     </div>
