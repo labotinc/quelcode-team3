@@ -31,7 +31,7 @@ class CreateReservations extends AbstractMigration
         $table->addColumn('discount_id', 'integer', [
             'default' => null,
             'limit' => 11,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('seat_number', 'string', [
             'default' => null,
@@ -44,7 +44,7 @@ class CreateReservations extends AbstractMigration
             'null' => false,
         ]);
         $table->addColumn('is_confirmed', 'boolean', [
-            'default' => null,
+            'default' => 0,
             'null' => false,
         ]);
         $table->addColumn('expire_at', 'datetime', [
@@ -52,11 +52,11 @@ class CreateReservations extends AbstractMigration
             'null' => false,
         ]);
         $table->addColumn('is_cancelled', 'boolean', [
-            'default' => null,
+            'default' => 0,
             'null' => false,
         ]);
         $table->addColumn('is_deleted', 'boolean', [
-            'default' => null,
+            'default' => 0,
             'null' => false,
         ]);
         $table->addColumn('created', 'datetime', [

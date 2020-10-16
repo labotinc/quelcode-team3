@@ -29,7 +29,7 @@ class CreateDiscounts extends AbstractMigration
             'null' => false,
         ]);
         $table->addColumn('is_invalid', 'boolean', [
-            'default' => null,
+            'default' => 0,
             'null' => false,
         ]);
         $table->addColumn('created', 'datetime', [
