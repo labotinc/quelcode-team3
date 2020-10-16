@@ -23,7 +23,6 @@ class SchedulesController extends AppController
             'contain' => ['Movies'],
         ];
         $schedules = $this->paginate($this->Schedules);
-
         $this->set(compact('schedules'));
 
         $title = 'QUEL CINNEMAS';
