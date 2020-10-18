@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Http\Exception\UnauthorizedException;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -10,8 +14,24 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class UsersController extends AppController
+class UsersController extends BaseController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
+    /**
+     * 認証スルー設定
+     * @param Event $event
+     * @return \Cake\Http\Response|null|void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+    }
+
     /**
      * Index method
      *
@@ -58,9 +78,8 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
-    public function welcome() 
+    public function welcome()
     {
-
     }
 
     /**
@@ -87,6 +106,37 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $user_data = $this->Users->find()->where(['email' => $this->request->getData('email')])->first();
+                $reg_str = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/";
+                //以下エラーメッセージ
+                if ($this->request->getData('email') === '') {
+                    $this->set('mail_vacant', '空白になっています。');
+                } elseif (preg_match($reg_str, $this->request->getData('email')) === false) {
+                    $this->set('mail_format', 'メールアドレスが間違っているようです。');
+                } elseif ($this->request->getData('email') !== $user_data['email']) {
+                    // エラー文はヘッダー、フッター完成後に位置調整必要
+                    $this->set('mail_error', 'メールアドレスが間違っているようです。');
+                } elseif ($this->request->getData('password') === '') {
+                    $this->set('password_vacant', '空白になっています。');
+                } else {
+                    $this->set('pass_error', 'パスワードが間違っているようです。');
+                }
+            }
+        };
+    }
+
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
+    }
     /**
      * Delete method
      *

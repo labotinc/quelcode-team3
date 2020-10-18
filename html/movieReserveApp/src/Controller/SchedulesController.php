@@ -59,8 +59,14 @@ class SchedulesController extends AppController
                 return $exp->between('start_at', $targetDay . ' 00:00:00', $targetDay . ' 23:59:59');
             });
         });
+
         $this->set(compact('dates'));
         $this->set(compact('movies'));
+
+        $title = 'QUEL CINNEMAS';
+        $login = 'ログイン';
+        $this->set(compact('title', 'login'));
+
     }
 
     /**
