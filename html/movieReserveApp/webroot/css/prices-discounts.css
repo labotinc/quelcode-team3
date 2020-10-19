@@ -1,0 +1,51 @@
+.prices-discounts-main {
+  padding-bottom: 168px;
+}
+.prices-discounts-wrapper {
+  width: 528px;
+  margin-left: 416px;
+}
+.regular-prices, .discounts {
+  margin-bottom: 18px;
+  border-left: 8px solid #ADADAD;
+  padding-left: 8px;
+}
+.regular-prices-wrapper {
+  margin-bottom: 72px;
+}
+.regular-price {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+}
+.regular-price:last-child {
+  margin-bottom: 0;
+}
+.regular-price > p {
+  font-size: 14px;
+  letter-spacing: 1.12px;
+}
+.discount {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+  padding: 8px 16px 8px 16px;
+  margin-bottom: 10px;
+}
+.discount h2 {
+  font-size: 14px;
+  border: none;
+  padding: 0;
+  margin-bottom: 8px;
+  margin-left: 0;
+}
+.discount-details {
+  font-size: 10px;
+  letter-spacing: 0.8px;
+}
+.discounted-price {
+  padding-top: 24px;
+  font-size: 14px;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <?php echo $this->Html->charset() ?>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     echo $this->Html->css('index.css');
     echo $this->Html->css('slideshow.css');
     echo $this->Html->css('user.css');
+    echo $this->Html->css('prices-discounts.css')
   ?>
 </head>
 
@@ -19,12 +21,30 @@
     <h1 class="logo"><a href=""><span class="logo-1">QUEL</span><span class="logo-2">CINNEMAS</span></a></h1>
     <nav>
       <ul class="main-nav">
-        <li><a href="#">トップ</a></li>
-        <li><a href="#">上映スケジュール</a></li>
-        <li><a href="#">料金・割引</a></li>
+        <li>
+          <?php echo $this->Html->link(__('トップ'), [
+            'controller' => 'Index',
+            'action' => 'index'
+          ])
+          ?>
+        </li>
+        <li>
+          <?php echo $this->Html->link(__('上映スケジュール'), [
+            'controller' => 'Schedules',
+            'action' => 'index'
+          ])
+          ?>
+        </li>
+        <li>
+          <?php echo $this->Html->link(__('料金・割引'), [
+            'controller' => 'PricesDiscounts',
+            'action' => 'index'
+          ])
+          ?>
+        </li>
       </ul>
     </nav>
-      <p class="login_button"><a href="#"><?php echo h($login) ?></a></p>
+    <p class="login_button"><a href="#"><?php echo h($login) ?></a></p>
   </header>
 
   <?php echo $this->fetch('content') ?>
@@ -32,9 +52,27 @@
   <footer class="page-footer">
     <h3 class="logo-2">QUEL CINNEMAS</h3>
     <ul class="bottom-nav">
-      <li><a href="#">トップ</a></li>
-      <li><a href="#">上映スケジュール</a></li>
-      <li><a href="#">料金・割引</a></li>
+      <li>
+        <?php echo $this->Html->link(__('トップ'), [
+          'controller' => 'Index',
+          'action' => 'index'
+        ])
+        ?>
+      </li>
+      <li>
+        <?php echo $this->Html->link(__('上映スケジュール'), [
+          'controller' => 'Schedules',
+          'action' => 'index'
+        ])
+        ?>
+      </li>
+      <li>
+        <?php echo $this->Html->link(__('料金・割引'), [
+          'controller' => 'PricesDiscounts',
+          'action' => 'index'
+        ])
+        ?>
+      </li>
     </ul>
   </footer>
 
