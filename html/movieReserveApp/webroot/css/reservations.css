@@ -1,0 +1,58 @@
+.seat-reservation {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 39px;
+  color: #707070;
+}
+.seats-outer-wrapper {
+  background-color: #fff;
+  padding: 84px 120px 80px 120px;
+  width: 736px;
+  margin: 0 auto;
+}
+.seats-inner-wrapper {
+  padding: 0 9px;
+  display: flex;
+  margin-bottom: 56px;
+}
+.seats-columns {
+  text-align: center;
+  margin-right: 16px;
+}
+.seats-columns:last-child {
+  margin-right: 20px;
+}
+.seats-columns li {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #99918C;
+}
+.seats-rows {
+  padding-top: 40px;
+}
+.seats-rows li {
+  font-size: 13px;
+  margin-bottom: 22px;
+  line-height: 18px;
+  color: #99918C;
+}
+.rows-left {
+  margin-right: 19px;
+}
+.available {
+  height: 24px;
+  width: 24px;
+  background-color: #C9C9C9;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.seats-reservation-btn {
+  text-align: center;
+}
+.seats-reservation-btn > a {
+  display: inline-block;
+  padding: 16px 152px;
+  background-color: #F5AE0B;
+  color: #fff;
+  letter-spacing: .44px;
+}

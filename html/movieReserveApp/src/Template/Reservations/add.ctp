@@ -1,40 +1,155 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Reservation $reservation
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Reservations'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Schedules'), ['controller' => 'Schedules', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Schedule'), ['controller' => 'Schedules', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Regular Prices'), ['controller' => 'RegularPrices', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Regular Price'), ['controller' => 'RegularPrices', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Discounts'), ['controller' => 'Discounts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Discount'), ['controller' => 'Discounts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="reservations form large-9 medium-8 columns content">
-    <?= $this->Form->create($reservation) ?>
-    <fieldset>
-        <legend><?= __('Add Reservation') ?></legend>
-        <?php
-            echo $this->Form->control('schedule_id', ['options' => $schedules]);
-            echo $this->Form->control('user_id', ['options' => $users]);
-            echo $this->Form->control('regular_price_id', ['options' => $regularPrices]);
-            echo $this->Form->control('discount_id', ['options' => $discounts]);
-            echo $this->Form->control('seat_number');
-            echo $this->Form->control('purchased_price');
-            echo $this->Form->control('is_confirmed');
-            echo $this->Form->control('expire_at');
-            echo $this->Form->control('is_cancelled');
-            echo $this->Form->control('is_deleted');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<main>
+  <h1 class="seat-reservation">座席予約</h1>
+  <div class="seats-outer-wrapper">
+    <div class="seats-inner-wrapper">
+      <ul class="seats-rows rows-left">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+      </ul>
+      <ul class="seats-columns colum-A">
+        <li>A</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-B">
+        <li>B</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-C">
+        <li>C</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-D">
+        <li>D</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-E">
+        <li>E</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-F">
+        <li>F</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-G">
+        <li>G</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-H">
+        <li>H</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-I">
+        <li>I</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-J">
+        <li>J</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-columns colum-K">
+        <li>K</li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+        <li class="available"></li>
+      </ul>
+      <ul class="seats-rows rows-right">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+      </ul>
+    </div>
+    <div class="seats-reservation-btn">
+      <?php echo $this->Html->link(__('決定'), [
+        'controller' => 'Index',
+        'action' => 'index'
+      ])
+      ?>
+    </div>
+  </div>
+</main>
