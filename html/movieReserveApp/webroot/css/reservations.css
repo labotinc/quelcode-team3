@@ -27,8 +27,11 @@
   font-size: 13px;
   color: #99918C;
 }
+.seats-columns li:last-child {
+  margin-bottom: 0;
+}
 .seats-rows {
-  padding-top: 40px;
+  padding-top: 39px;
 }
 .seats-rows li {
   font-size: 13px;
@@ -36,8 +39,17 @@
   line-height: 18px;
   color: #99918C;
 }
+.seats-rows li:last-child {
+  margin-bottom: 0;
+}
 .rows-left {
   margin-right: 19px;
+}
+.unavailable {
+  height: 24px;
+  width: 24px;
+  background-color: #000;
+  border-radius: 3px;
 }
 .available {
   height: 24px;
