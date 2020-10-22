@@ -13,24 +13,20 @@
         <li>8</li>
       </ul>
       <?php
-      $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
-      $columns_length = sizeof($columns);
-      $rows = 8;
-
-      for ($i = 0; $i < $columns_length; $i++) {
-        $column = $columns[$i];
-        echo "<ul class='seats-columns column-{$column}'>";
-        echo "<li>{$column}</li>";
-        for ($j = 1; $j <= $rows; $j++) {
-          $seat_id = $column . $j;
-          if (in_array($seat_id, $reservedSeats)) {
-            echo "<li class='unavailable' id='{$seat_id}'>";
-          } else {
-            echo "<li class='available' id='{$seat_id}'>";
+        for ($i = 0; $i < $columns_length; $i++) {
+          $column = $columns[$i];
+          echo "<ul class='seats-columns'>";
+          echo "<li>{$column}</li>";
+          for ($j = 1; $j <= $rows; $j++) {
+            $seat_id = $column . $j;
+            if (in_array($seat_id, $reservedSeats)) {
+              echo "<li class='unavailable' id='{$seat_id}'>";
+            } else {
+              echo "<li class='available' id='{$seat_id}'>";
+            }
           }
+          echo "</ul>";
         }
-        echo "</ul>";
-      }
       ?>
       <ul class="seats-rows rows-right">
         <li>1</li>
