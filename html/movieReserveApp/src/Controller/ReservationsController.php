@@ -72,7 +72,14 @@ class ReservationsController extends AppController
         $users = $this->Reservations->Users->find('list', ['limit' => 200]);
         $regularPrices = $this->Reservations->RegularPrices->find('list', ['limit' => 200]);
         $discounts = $this->Reservations->Discounts->find('list', ['limit' => 200]);
-        $this->set(compact('reservation', 'schedules', 'users', 'regularPrices', 'discounts'));
+        $schedule_id = $this->request->query['schedule_id']; 
+        // 座席予約をしようとしている上映回に紐づく予約情報をDBから取得
+        $reservations = $this->Reservations->find()->select('seat_number')->where(['schedule_id'=>$schedule_id]);
+        // 各予約情報から座席番号を取得し配列 $reservedSeats に代入
+        foreach ($reservations as $reservation) {
+            $reservedSeats[] = $reservation['seat_number'];
+        }
+        $this->set(compact('reservation', 'schedules', 'users', 'regularPrices', 'discounts', 'reservedSeats'));
     }
 
     /**
