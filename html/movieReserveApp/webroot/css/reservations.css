@@ -49,6 +49,7 @@
   height: 24px;
   width: 24px;
   background-color: #000;
+  opacity: .7;
   border-radius: 3px;
 }
 .available {
@@ -58,13 +59,21 @@
   border-radius: 3px;
   cursor: pointer;
 }
-.seats-reservation-btn {
+.selected {
+  height: 24px;
+  width: 24px;
+  background-color: #F5AE0B;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.submit {
   text-align: center;
 }
-.seats-reservation-btn > a {
+.seats-reservation-btn {
   display: inline-block;
   padding: 16px 152px;
   background-color: #F5AE0B;
   color: #fff;
   letter-spacing: .44px;
 }
+

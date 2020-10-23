@@ -77,7 +77,8 @@
     </ul>
   </footer>
 
+  <?php echo $this->Html->script('jquery.min'); ?>
   <?php echo $this->Html->script('slideshow'); ?>
-
+  <?php echo $this->Html->script('reservations'); ?>
 </body>
 </html>
