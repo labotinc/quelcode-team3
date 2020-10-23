@@ -11,6 +11,8 @@
     echo $this->Html->css('common.css');
     echo $this->Html->css('index.css');
     echo $this->Html->css('slideshow.css');
+    echo $this->Html->css('mypage.css');
+    echo $this->Html->css('schedule.css');
     echo $this->Html->css('user.css');
     echo $this->Html->css('prices-discounts.css')
   ?>

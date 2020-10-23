@@ -1,59 +1,84 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Schedule[]|\Cake\Collection\CollectionInterface $schedules
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Schedule'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Movies'), ['controller' => 'Movies', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Movie'), ['controller' => 'Movies', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Reservations'), ['controller' => 'Reservations', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Reservation'), ['controller' => 'Reservations', 'action' => 'add']) ?></li>
+<main>
+  <!-- ここから上映スケジュール ナビゲーション -->
+  <section class="schedule-section-1">
+    <h2 class="schedule-h2-1">上映スケジュール</h2>
+    <ul class="schedule-dates">
+      <? foreach ($dates as $index => $date): ?>
+      <!-- 選択した日。背景は黄色 -->
+        <? if($page == $index) : ?>
+      <!-- 割引日でないなら -->
+          <? if (empty($date["event"])): ?>
+      <li class="current-day"><a href="schedules?page=<?= $index ?>"><?= $date["date"] ?>(<?= $date["week"] ?>)</a></li>
+      <!-- 割引日なら -->
+          <? else: ?>
+      <li class="current-day"><span class="css-br"><a href="schedules?page=<?= $index ?>"><?= $date["date"] ?>(<?= $date["week"] ?>)</a></span><a href="schedules?page=<?= $index ?>  " class="discount-day"><?= $date["event"] ?></a></li>
+        <? endif; ?>
+      <!-- 選択していない日。背景は黄色ではない -->
+        <? else: ?>
+      <!-- 割引日でないなら -->
+          <? if (empty($date["event"])): ?>
+      <li><a href="schedules?page=<?= $index ?>"><?= $date["date"] ?>(<?= $date["week"] ?>)</a></li>
+      <!-- 割引日なら -->
+          <? else: ?>
+      <li><span class="css-br"><a href="schedules?page=<?= $index ?>"><?= $date["date"] ?>(<?= $date["week"] ?>)</a></span><a href="schedules?page=<?= $index ?>  " class="discount-day"><?= $date["event"] ?></a></li>
+          <? endif; ?>
+        <? endif; ?>
+      <? endforeach ?>
     </ul>
-</nav>
-<div class="schedules index large-9 medium-8 columns content">
-    <h3><?= __('Schedules') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('movie_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('start_at') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('end_at') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($schedules as $schedule): ?>
-            <tr>
-                <td><?= $this->Number->format($schedule->id) ?></td>
-                <td><?= $schedule->has('movie') ? $this->Html->link($schedule->movie->title, ['controller' => 'Movies', 'action' => 'view', $schedule->movie->id]) : '' ?></td>
-                <td><?= h($schedule->start_at) ?></td>
-                <td><?= h($schedule->end_at) ?></td>
-                <td><?= h($schedule->created) ?></td>
-                <td><?= h($schedule->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $schedule->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $schedule->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $schedule->id], ['confirm' => __('Are you sure you want to delete # {0}?', $schedule->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+  </section>
+  <!-- ここまで上映スケジュール ナビゲーション -->
+
+  <!-- ここから各映画の上映スケジュール -->
+  <section class="schedule-section-2">
+    <!-- 上映日 -->
+    <h2 class="schedule-h2-2"><? echo $dates[$page]["date"] ?>(<? echo $dates[$page]["week"] ?>)</h2>
+    <!-- 映画タイトル、上映時間など -->
+    <? foreach ($movies as $movie): ?>
+    <div class="schedule-details">
+      <div class="schedule-screen">
+        <h3><?= $movie->title; ?></h3>
+        <ul class="schedule-time">
+          <li>[ 上映時間：<?=ToMin(date("H:i:s",strtotime($movie->screen_time))) ?>分 ]</li>
+          <li><?= date("n月j日", strtotime($movie->last_screened_on)) ?>(<?= ToDay($movie->last_screened_on) ?>)終了予定</li>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
-</div>
+      </div>
+        <ul class="schedule-each">
+          <!-- 映画のポスター画像 -->
+          <li>
+            <?= $this->Html->image("movies_small/$movie->thumbnail_file_name.png") ?>
+          </li>
+          <? foreach ($movie->schedules as $schedule): ?>
+          <li>
+            <!-- 映画の開始時間、終了時間、予約購入ボタン -->
+            <p class="schedule-screen-time">
+              <span class="schedule-movie-start"><?= date("G:i", strtotime($schedule->start_at)) ?></span><span class="schedule-movie-end">〜<?= date("G:i", strtotime($schedule->end_at)) ?></span>
+            </p>
+            <p class="schedule-reserve-button"><a href="#">予約購入</a></p>
+          </li>
+          <? endforeach;?>
+        </ul>
+      </div>
+    <? endforeach; ?>
+  </section>
+  <!-- ここまで各映画の上映スケジュール -->
+</main>
+
+<!-- 曜日を取得 -->
+<?php
+  function ToDay($date) {
+    $date_num = date('w', strtotime($date));
+    $week = ['日', '月', '火', '水', '木', '金', '土'];
+    return $week[$date_num];
+  }
+?>
+
+<!-- 時間を分に変換 -->
+<?php
+  function ToMin($time) {
+    $toArry = explode(":", $time);
+    $hour = $toArry[0] * 60;
+    $sec = round($toArry[2] / 60, 2);
+    $mins = $hour +$toArry[1] + $sec;
+    return $mins;
+  }
+?>
