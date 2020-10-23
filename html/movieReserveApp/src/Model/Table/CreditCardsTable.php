@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -54,6 +55,8 @@ class CreditCardsTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        $validator->setProvider('Custom', 'App\Model\Validation\CustomValidation');
+
         $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
@@ -62,18 +65,24 @@ class CreditCardsTable extends Table
             ->scalar('number')
             ->maxLength('number', 16)
             ->requirePresence('number', 'create')
-            ->notEmptyString('number');
+            ->notEmptyString('number', '空白になっています')
+            ->add('number', 'halfSizeNumber', ['rule' => 'halfSizeNumber', 'provider' => 'Custom', 'message' => '半角数字以外の文字が使われています'])
+            ->creditCard('number', 'all', '不正なカード番号です');
 
         $validator
             ->scalar('holder_name')
             ->maxLength('holder_name', 255)
             ->requirePresence('holder_name', 'create')
-            ->notEmptyString('holder_name');
+            ->notEmptyString('holder_name', '空白になっています')
+            ->add('holder_name', 'halfSizeEnglish', ['rule' => 'halfSizeEnglish', 'provider' => 'Custom', 'message' => '半角英字以外の文字が使われています']);
+
 
         $validator
-            ->date('expire_on')
+            ->date('expire_on', ['my'], '有効期限が間違っています')
             ->requirePresence('expire_on', 'create')
-            ->notEmptyDate('expire_on');
+            ->notEmptyDate('expire_on', '空白になっています')
+            ->add('expire_on', 'halfSizeNumber', ['rule' => 'halfSizeNumber', 'provider' => 'Custom', 'message' => '半角数字以外の文字が使われています']);
+
 
         $validator
             ->boolean('is_deleted')
