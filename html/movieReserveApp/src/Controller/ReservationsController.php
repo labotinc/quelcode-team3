@@ -23,6 +23,8 @@ class ReservationsController extends AppController
 
   public function initialize()
   {
+    parent::initialize();
+
     $title = 'QUEL CINNEMAS';
     $login = 'ログイン';
 
@@ -61,18 +63,6 @@ class ReservationsController extends AppController
    */
   public function add()
   {
-    $current_time = new DateTime();
-    $allCancelled = $this->Reservations->find('all', [
-        'conditions' => array(
-            'expire_at <' => $current_time,
-            'is_cancelled' => false
-        )
-    ]);
-    foreach ($allCancelled as $cancelled) {
-        $cancelled->is_cancelled = true;
-        $this->Reservations->save($cancelled);
-    }
-
     $reservation = $this->Reservations->newEntity();
     if ($this->request->is('post')) {
       $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
@@ -83,44 +73,44 @@ class ReservationsController extends AppController
       }
       $this->Flash->error(__('The reservation could not be saved. Please, try again.'));
     }
-    $schedules = $this->Reservations->Schedules->find('list', ['limit' => 200]);
-    $users = $this->Reservations->Users->find('list', ['limit' => 200]);
-    $regularPrices = $this->Reservations->RegularPrices->find('list', ['limit' => 200]);
-    $discounts = $this->Reservations->Discounts->find('list', ['limit' => 200]);
+    $current_time = new DateTime();
+    $allCancelled = $this->Reservations->find('all', [
+      'conditions' => array(
+        'expire_at <' => $current_time,
+        'is_cancelled' => false
+      )
+    ]);
+    foreach ($allCancelled as $cancelled) {
+      $cancelled->is_cancelled = true;
+      $this->Reservations->save($cancelled);
+    }
     $schedule_id = $this->request->query['schedule_id'];
     // 座席予約をしようとしている上映回に紐づく予約情報をDBから取得
-    try {
-      $reservations = $this->Reservations->find()
-        ->select('seat_number')
-        ->where([
-          'schedule_id' => $schedule_id,
-          'is_cancelled' => false,
-          'is_deleted' => false
-        ]);
-    } catch (Exception $e) {
-      $reservations = null;
-    }
-    // 各予約情報から座席番号を取得し配列$reservedSeatsに代入
+    $reservations = $this->Reservations->find()
+      ->select('seat_number')
+      ->where([
+        'schedule_id' => $schedule_id,
+        'is_cancelled' => false,
+        'is_deleted' => false
+      ]);
+    // 配列$reservedSeatsを初期化
+    $reservedSeats = [];
+    // 上映回に紐づく有効な予約情報が存在する場合は座席番号を取得し配列$reservedSeatsに代入
     if ($reservations) {
-      foreach ($reservations as $reservation) {
-        $reservedSeats[] = $reservation['seat_number'];
+      foreach ($reservations as $eachReservation) {
+        $reservedSeats[] = $eachReservation['seat_number'];
       }
-    } elseif ($reservation === null) {
-      $reservedSeats = [];
     }
     $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
     $columns_length = sizeof($columns);
     $rows = 8;
 
     $this->set(compact(
+      'schedule_id',
       'reservation',
-      'schedules',
-      'users',
-      'regularPrices',
       'columns',
       'columns_length',
       'rows',
-      'discounts',
       'reservedSeats',
       'reservations',
     ));
