@@ -114,4 +114,16 @@ class ReservationsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function detail() {
+        $reservations = $this->Reservations->find('all')
+          ->where(['user_id' => 1])
+          ->contain(['schedules' => ['movies']]);
+
+        $this->set(compact('reservations'));
+        
+        $title = 'QUEL CINNEMAS';
+        $login = 'ログイン';
+        $this->set(compact('title', 'login'));
+     }
 }
