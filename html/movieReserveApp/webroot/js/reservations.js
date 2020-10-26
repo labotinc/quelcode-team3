@@ -10,10 +10,13 @@ $(function() {
   }
 
   $(document).on('click', '.available', function() {
-    $('.selected').toggleClass('selected');
-    $(this).addClass('selected');
+    // 座席選択後に別の席をクリックした際の処理
+    if (!$(this).hasClass('selected')) {
+      $('.selected').removeClass('selected');
+      $(this).addClass('selected');
 
-    setSeatNumber();
+      setSeatNumber();
+    }
   });
 
   $(document).on('click', '.selected', function() {
@@ -22,8 +25,6 @@ $(function() {
 
       document.getElementById('seat-number').setAttribute('value', '');
     }
-
-    setSeatNumber();
   })
 
 });
