@@ -77,32 +77,23 @@ class ReservationsTable extends Table
             ->scalar('seat_number')
             ->maxLength('seat_number', 4)
             ->requirePresence('seat_number', 'create')
-            ->notEmptyString('seat_number');
+            ->notEmptyString('seat_number', '座席を選択してください');
 
         $validator
-            ->integer('purchased_price')
-            ->requirePresence('purchased_price', 'create')
-            ->notEmptyString('purchased_price');
+            ->integer('purchased_price');
 
         $validator
-            ->boolean('is_confirmed')
-            ->requirePresence('is_confirmed', 'create')
-            ->notEmptyString('is_confirmed');
+            ->boolean('is_confirmed');
 
         $validator
             ->dateTime('expire_at')
-            ->requirePresence('expire_at', 'create')
-            ->notEmptyDateTime('expire_at');
+            ->allowEmptyDateTime('expire_at', null, 'create');
 
         $validator
-            ->boolean('is_cancelled')
-            ->requirePresence('is_cancelled', 'create')
-            ->notEmptyString('is_cancelled');
+            ->boolean('is_cancelled');
 
         $validator
-            ->boolean('is_deleted')
-            ->requirePresence('is_deleted', 'create')
-            ->notEmptyString('is_deleted');
+            ->boolean('is_deleted');
 
         return $validator;
     }
