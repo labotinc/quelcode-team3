@@ -3,14 +3,12 @@
   <div class="seats-outer-wrapper">
     <div class="seats-inner-wrapper">
       <ul class="seats-rows rows-left">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
+        <!-- メンテナンス性を考慮し繰り返し処理で列番号を描画 -->
+        <?php
+        for ($i = 1; $i <= $rows; $i++) {
+          echo "<li>{$i}</li>";
+        }
+        ?>
       </ul>
       <?php
       // 縦の列数だけ繰り返し処理で描画を行う
@@ -32,29 +30,29 @@
       }
       ?>
       <ul class="seats-rows rows-right">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
+        <?php
+        for ($i = 1; $i <= $rows; $i++) {
+          echo "<li>{$i}</li>";
+        }
+        ?>
       </ul>
     </div>
     <?=
       $this->Form->create($reservation, [
         'type' => 'post',
         'url' => ['controller' => 'Reservations', 'action' => 'add'],
+        'novalidate' => true,
       ]);
     ?>
     <?php
-      echo $this->Form->control('seat_number');
+    echo $this->Form->control('seat_number');
+    echo $this->Form->hidden('schedule_id', ['value' => $schedule_id]);
     ?>
-    <?php echo $this->form->submit(__('決定'), [
-        'class' => 'seats-reservation-btn'
-      ]);
-      echo $this->Form->end();
+    <?php
+    echo $this->form->submit(__('決定'), [
+      'class' => 'seats-reservation-btn'
+    ]);
+    echo $this->Form->end();
     ?>
   </div>
   <a href="#" id="confirm-btn">confirm</a>
