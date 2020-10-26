@@ -63,11 +63,6 @@ class SchedulesController extends AppController
         $this->set(compact('dates'));
         $this->set(compact('movies'));
         $this->set(compact('page'));
-
-        $title = 'QUEL CINNEMAS';
-        $login = 'ログイン';
-        $this->set(compact('title', 'login'));
-
     }
 
     /**

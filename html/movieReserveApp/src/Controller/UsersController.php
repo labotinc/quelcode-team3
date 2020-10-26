@@ -14,7 +14,7 @@ use Cake\Event\Event;
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class UsersController extends BaseController
+class UsersController extends AppController
 {
 
     public function initialize()
@@ -22,14 +22,9 @@ class UsersController extends BaseController
         parent::initialize();
     }
 
-    /**
-     * 認証スルー設定
-     * @param Event $event
-     * @return \Cake\Http\Response|null|void
-     */
     public function beforeFilter(Event $event)
     {
-        parent::beforeFilter($event);
+        $this->Auth->allow(['index', 'add', 'welcome']);
     }
 
     /**
