@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Mypage Controller
@@ -16,6 +17,15 @@ class MypageController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
+    public function beforeFilter(Event $event)
+    {
+    }
+
     public function index()
     {
         $title = 'QUEL CINNEMAS';
