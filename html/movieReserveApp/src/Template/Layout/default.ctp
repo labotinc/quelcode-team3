@@ -5,21 +5,23 @@
   <?php echo $this->Html->charset() ?>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo h($title) ?></title>
+  <title>QEUL CINNEMAS</title>
   <?php
-    echo $this->Html->css('ress.css');
-    echo $this->Html->css('common.css');
-    echo $this->Html->css('index.css');
-    echo $this->Html->css('slideshow.css');
-    echo $this->Html->css('user.css');
-    echo $this->Html->css('prices-discounts.css');
-    echo $this->Html->css('reservations.css');
+  echo $this->Html->css('ress.css');
+  echo $this->Html->css('common.css');
+  echo $this->Html->css('index.css');
+  echo $this->Html->css('slideshow.css');
+  echo $this->Html->css('mypage.css');
+  echo $this->Html->css('schedule.css');
+  echo $this->Html->css('user.css');
+  echo $this->Html->css('prices-discounts.css');
+  echo $this->Html->css('reservations.css');
   ?>
 </head>
 
 <body>
   <header class="page-header">
-    <h1 class="logo"><a href=""><span class="logo-1">QUEL</span><span class="logo-2">CINNEMAS</span></a></h1>
+    <h1 class="logo"><span class="logo-1">QUEL</span><span class="logo-2">CINNEMAS</span></h1>
     <nav>
       <ul class="main-nav">
         <li>
@@ -45,7 +47,19 @@
         </li>
       </ul>
     </nav>
-    <p class="login_button"><a href="#"><?php echo h($login) ?></a></p>
+    <p class="login_button">
+      <?php
+      if (!isset($authuser)) {
+        $login = 'ログイン';
+      } else {
+        $login = 'マイページ';
+      }
+      echo $this->Html->link(__($login), [
+        'controller' => 'Mypage',
+        'action' => 'index'
+      ])
+      ?>
+    </p>
   </header>
 
   <?php echo $this->fetch('content') ?>
@@ -81,4 +95,5 @@
   <?php echo $this->Html->script('slideshow'); ?>
   <?php echo $this->Html->script('reservations'); ?>
 </body>
+
 </html>
