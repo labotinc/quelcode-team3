@@ -63,6 +63,7 @@ class ReservationsController extends AppController
    */
   public function add()
   {
+    $schedule_id = $this->request->query['schedule_id'];
     $reservation = $this->Reservations->newEntity();
     if ($this->request->is('post')) {
       $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
@@ -84,7 +85,6 @@ class ReservationsController extends AppController
       $cancelled->is_cancelled = true;
       $this->Reservations->save($cancelled);
     }
-    $schedule_id = $this->request->query['schedule_id'];
     // 座席予約をしようとしている上映回に紐づく予約情報をDBから取得
     $reservations = $this->Reservations->find()
       ->select('seat_number')
@@ -112,7 +112,6 @@ class ReservationsController extends AppController
       'columns_length',
       'rows',
       'reservedSeats',
-      'reservations',
     ));
   }
 
