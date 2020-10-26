@@ -76,3 +76,75 @@
   color: #fff;
   letter-spacing: .44px;
 }
+/* ここまで座席予約画面 */
+
+/* ここからマイページ予約詳細画面 */
+.reservations-top-table-container {
+  padding: 120px 0 88px;
+  margin: 0 auto 185px;
+  box-shadow: 0px 0px 6px #00000029;
+  background-color: #FFF;
+  max-width: 736px;
+}
+.reservations-descriptions {
+  display: flex;
+  align-items: center;
+  background: #F2F2F2;
+  margin: 0 96px 72px;
+}
+.reservations-descriptions-no-reserve {
+    align-items: center;
+    margin: 0 96px 40px;
+}
+.reservations-more-details {
+  display: flex;
+  align-items: center;
+  margin-right: 43px;
+}
+.reservations-poster {
+  margin-right: 24px;
+  width: 107px;
+}
+.reservations-title {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.reservations-date {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.reservations-price {
+  font-size: 18px;
+  font-weight: 600;
+}
+.reservations-space {
+  margin-right: 12px;
+}
+.reservations-details {
+  text-align: initial;
+}
+.reservations-top-container {
+  text-align: center;
+  color: #707070;
+}
+.reservations-cancel-button a {
+  font-size: 12px;
+  color: #AFAFAF;
+  padding: 10px 18px;
+  border: 1.5px solid #AFAFAF;
+}
+.reservations-cancel-button a:hover {
+  background-color: #fff;
+}
+.reservations-to-mypage-button a {
+  background-color: #F5AE0B;
+  display: inline-block;
+  padding: 16px 104px;
+  box-shadow: 0px 2px 2px #00000014;
+  font-size: 15px;
+  color: #FFF;
+  letter-spacing: 0.44px;
+}
+.reservations-to-mypage-button a:hover{
+  box-shadow: 0px 2px 6px #00000056;
+}
