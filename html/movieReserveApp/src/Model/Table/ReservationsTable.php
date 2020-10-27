@@ -110,7 +110,9 @@ class ReservationsTable extends Table
         $rules->add($rules->existsIn(['schedule_id'], 'Schedules'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['regular_price_id'], 'RegularPrices'));
-        $rules->add($rules->existsIn(['discount_id'], 'Discounts'));
+				$rules->add($rules->existsIn(['discount_id'], 'Discounts'));
+				// 複合ユニークキーを生成し、任意の上映回で同じ座席への予約が重複することを防ぐ
+				$rules->add($rules->isUnique(['schedule_id', 'seat_number']));
 
         return $rules;
     }
