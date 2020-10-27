@@ -62,6 +62,7 @@
     </p>
   </header>
 
+  <?= $this->Flash->render() ?>
   <?php echo $this->fetch('content') ?>
 
   <footer class="page-footer">

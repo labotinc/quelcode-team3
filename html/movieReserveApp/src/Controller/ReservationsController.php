@@ -63,17 +63,17 @@ class ReservationsController extends AppController
    */
   public function add()
   {
+    $user_id = $this->Auth->user('id');
     $schedule_id = $this->request->query['schedule_id'];
     $reservation = $this->Reservations->newEntity();
     if ($this->request->is('post')) {
       $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
       if ($this->Reservations->save($reservation)) {
-        $this->Flash->success(__('The reservation has been saved.'));
-
         return $this->redirect(['action' => 'index']);
       }
-      $this->Flash->error(__('The reservation could not be saved. Please, try again.'));
+      $this->Flash->error(__('予約処理が正常に行われませんでした。座席選択後「決定」ボタンを押してください。'));
     }
+    // 有効期限切れの予約情報を取得する処理
     $current_time = new DateTime();
     $allCancelled = $this->Reservations->find('all', [
       'conditions' => array(
@@ -81,6 +81,7 @@ class ReservationsController extends AppController
         'is_cancelled' => false
       )
     ]);
+    // 有効期限切れの予約情報のキャンセルフラグを「1」とする処理
     foreach ($allCancelled as $cancelled) {
       $cancelled->is_cancelled = true;
       $this->Reservations->save($cancelled);
@@ -106,6 +107,7 @@ class ReservationsController extends AppController
     $rows = 8;
 
     $this->set(compact(
+      'user_id',
       'schedule_id',
       'reservation',
       'columns',
