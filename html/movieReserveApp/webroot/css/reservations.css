@@ -8,7 +8,7 @@
   background-color: #fff;
   padding: 84px 120px 80px 120px;
   width: 736px;
-  margin: 0 auto;
+  margin: 0 auto 33px auto;
 }
 .seats-inner-wrapper {
   padding: 0 9px;
@@ -48,8 +48,8 @@
 .unavailable {
   height: 24px;
   width: 24px;
-  background-color: #f50b0b;
-  opacity: .7;
+  background-color: #fff;
+  border: 1px dotted #C9C9C9;
   border-radius: 3px;
 }
 .available {
@@ -62,7 +62,7 @@
 .selected {
   height: 24px;
   width: 24px;
-  background-color: #707070;
+  background-color: #464444;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -76,4 +76,3 @@
   color: #fff;
   letter-spacing: .44px;
 }
-
