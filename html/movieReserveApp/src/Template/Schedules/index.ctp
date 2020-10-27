@@ -55,7 +55,7 @@
             </p>
             <p class="schedule-reserve-button">
               <?php 
-                echo $this->Html->link(__('料金・割引'), [
+                echo $this->Html->link(__('予約購入'), [
                 'controller' => 'Reservations',
                 'action' => 'add',
                 'schedule_id' => $schedule->id
