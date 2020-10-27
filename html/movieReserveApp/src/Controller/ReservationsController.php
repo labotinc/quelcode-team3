@@ -33,7 +33,7 @@ class ReservationsController extends AppController
   public function index()
   {
     $this->paginate = [
-      'contain' => ['Schedules', 'Users', 'RegularPrices', 'Discounts'],
+      'contain' => ['Schedules', 'Users'],
     ];
     $reservations = $this->paginate($this->Reservations);
 
@@ -50,7 +50,7 @@ class ReservationsController extends AppController
   public function view($id = null)
   {
     $reservation = $this->Reservations->get($id, [
-      'contain' => ['Schedules', 'Users', 'RegularPrices', 'Discounts'],
+      'contain' => ['Schedules', 'Users'],
     ]);
 
     $this->set('reservation', $reservation);
@@ -61,16 +61,19 @@ class ReservationsController extends AppController
    *
    * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
    */
-  public function add()
-  {
+  public function add() {
+    // 仮予約作成の際必要となるユーザIDとスケジュールIDを取得
     $user_id = $this->Auth->user('id');
     $schedule_id = $this->request->query['schedule_id'];
+
     $reservation = $this->Reservations->newEntity();
     if ($this->request->is('post')) {
       $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
       if ($this->Reservations->save($reservation)) {
-        return $this->redirect(['action' => 'index']);
+        // 処理が成功した際は新規作成したデータのIDをクエリパラメータとして渡し、予約詳細入力画面に遷移する
+        return $this->redirect(['action' => 'details', 'id' => $reservation->id]);
       }
+      // DBへのデータ挿入失敗時のエラーメッセージ
       $this->Flash->error(__('予約処理が正常に行われませんでした。座席選択後「決定」ボタンを押してください。'));
     }
     // 有効期限切れの予約情報を取得する処理
@@ -78,15 +81,15 @@ class ReservationsController extends AppController
     $allCancelled = $this->Reservations->find('all', [
       'conditions' => array(
         'expire_at <' => $current_time,
-        'is_cancelled' => false
+        'is_cancelled' => false,
       )
     ]);
-    // 有効期限切れの予約情報のキャンセルフラグを「1」とする処理
+    // 座席予約画面が呼び出された直後に、有効期限切れの予約情報のキャンセルフラグを「1」とする処理
     foreach ($allCancelled as $cancelled) {
       $cancelled->is_cancelled = true;
       $this->Reservations->save($cancelled);
     }
-    // 座席予約をしようとしている上映回に紐づく予約情報をDBから取得
+    // 座席予約画面が呼び出された直後に、座席予約をしようとしている上映回に紐づく予約情報をDBから取得
     $reservations = $this->Reservations->find()
       ->select('seat_number')
       ->where([
@@ -102,10 +105,13 @@ class ReservationsController extends AppController
         $reservedSeats[] = $eachReservation['seat_number'];
       }
     }
+
+    // メンテナンス性を考慮し映画館の縦/横の列数を変数で定義
     $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
     $columns_length = sizeof($columns);
     $rows = 8;
 
+    // 定義した変数をviewに渡す
     $this->set(compact(
       'user_id',
       'schedule_id',
