@@ -20,16 +20,7 @@ class ReservationsController extends AppController
    *
    * @return \Cake\Http\Response|null
    */
-
-  public function initialize()
-  {
-    parent::initialize();
-
-    $title = 'QUEL CINNEMAS';
-    $login = 'ログイン';
-
-    $this->set(compact('title', 'login'));
-  }
+  
   public function index()
   {
     $this->paginate = [
