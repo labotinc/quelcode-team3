@@ -40,12 +40,16 @@
     <?=
       $this->Form->create($reservation, [
         'type' => 'post',
-        'url' => ['controller' => 'Reservations', 'action' => 'add'],
+        'url' => [
+          'action' => 'add',
+          'schedule_id' => $schedule_id
+        ],
         'novalidate' => true,
       ]);
     ?>
     <?php
-    echo $this->Form->control('seat_number');
+    echo $this->Form->hidden('seat_number', ['id' => 'seat-number']);
+    echo $this->Form->hidden('user_id', ['value' => $user_id]);
     echo $this->Form->hidden('schedule_id', ['value' => $schedule_id]);
     ?>
     <?php
@@ -55,5 +59,4 @@
     echo $this->Form->end();
     ?>
   </div>
-  <a href="#" id="confirm-btn">confirm</a>
 </main>
