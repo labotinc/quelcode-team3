@@ -77,7 +77,7 @@ class ReservationsTable extends Table
             ->scalar('seat_number')
             ->maxLength('seat_number', 4)
             ->requirePresence('seat_number', 'create')
-            ->notEmptyString('seat_number', '座席を選択してください');
+            ->notEmptyString('seat_number');
 
         $validator
             ->integer('purchased_price');
