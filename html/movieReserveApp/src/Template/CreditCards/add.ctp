@@ -1,29 +1,58 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\CreditCard $creditCard
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Credit Cards'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="creditCards form large-9 medium-8 columns content">
-    <?= $this->Form->create($creditCard) ?>
-    <fieldset>
-        <legend><?= __('Add Credit Card') ?></legend>
-        <?php
-            echo $this->Form->control('user_id', ['options' => $users]);
-            echo $this->Form->control('number');
-            echo $this->Form->control('holder_name');
-            echo $this->Form->control('expire_on');
-            echo $this->Form->control('is_deleted');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<main>
+    <section class="signup-main">
+        <h1>決済情報</h1>
+        <div class="signup-form-wrapper">
+            <?=
+                $this->Form->create($creditCard, [
+                    'type' => 'post',
+                    'url' => ['controller' => 'CreditCards', 'action' => 'add'],
+                    'novalidate' => true,
+                    'class' => 'signup-form'
+                ]);
+            ?>
+            <fieldset class="signup-fieldset">
+                <?php
+                echo $this->Form->control('user_id', [
+                    'type' => 'hidden',
+                    'value' => $user_id
+                ]);
+
+                echo $this->Form->control('number', [
+                    'placeholder' => 'クレジットカード番号',
+                    'required' => false,
+                    'label' => false
+                ]);
+                echo $this->Form->control('holder_name', [
+                    'placeholder' => 'クレジットカード名義',
+                    'required' => false,
+                    'label' => false
+                ]);
+                echo $this->Form->control('expire_on', [
+                    'type' => 'textbox',
+                    'placeholder' => '有効期限',
+                    'required' => false,
+                    'label' => false,
+                    'class' => 'password_check'
+                ]);
+                ?>
+                <p>/</p>
+                <?php
+                echo $this->Form->control('expire_on', [
+                    'type' => 'textbox',
+                    'placeholder' => '有効期限',
+                    'required' => false,
+                    'label' => false,
+                    'class' => 'password_check'
+                ]);
+
+                ?>
+            </fieldset>
+            <?php
+            echo $this->Form->submit(__('会員登録'), [
+                'class' => 'signup-submission-btn'
+            ]);
+            echo $this->Form->end();
+            ?>
+        </div>
+    </section>
+</main>
