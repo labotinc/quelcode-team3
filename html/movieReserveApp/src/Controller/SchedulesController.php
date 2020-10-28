@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use DateTime;
 
 /**
  * Schedules Controller
@@ -12,6 +14,14 @@ use App\Controller\AppController;
  */
 class SchedulesController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadModel('Movies');
+        $this->loadModel('Schedules');
+        $this->loadComponent('Discount');
+    }
     /**
      * Index method
      *
@@ -19,12 +29,40 @@ class SchedulesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Movies'],
-        ];
-        $schedules = $this->paginate($this->Schedules);
+        $page = intval($this->request->getQuery('page'));
 
-        $this->set(compact('schedules'));
+        if ($page < 0 || $page > 6) {
+            $page = 0;
+        }
+
+        // 上部の日付、曜日、割引情報作成
+        $dates = [];
+        $week = array("日", "月", "火", "水", "木", "金", "土");
+        for ($i = 0; $i < 7; $i++) {
+            $date = new DateTime();
+            $date->modify("+{$i} day");
+            $event = $this->Discount->returnEventName($date);
+            array_push($dates, ['date' => $date->format('m月d日'), 'week' => $week[$date->format('w')], 'event' => $event]);
+        }
+
+        // 映画情報の作成
+        $targetDay = date('Y-m-d', mktime(0, 0, 0, date('m'), date('d') + $page, date('Y')));
+        $movies = $this->Movies->find(
+            'all',
+            [
+                'conditions' => [
+                    'last_screened_on >=' => $targetDay,
+                ]
+            ]
+        )->contain('Schedules', function ($q) use ($targetDay) {
+            return $q->where(function ($exp) use ($targetDay) {
+                return $exp->between('start_at', $targetDay . ' 00:00:00', $targetDay . ' 23:59:59');
+            });
+        });
+
+        $this->set(compact('dates'));
+        $this->set(compact('movies'));
+        $this->set(compact('page'));
     }
 
     /**
