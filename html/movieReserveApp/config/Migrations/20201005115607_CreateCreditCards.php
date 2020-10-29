@@ -29,9 +29,9 @@ class CreateCreditCards extends AbstractMigration
             'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('expire_on', 'integer', [
-            'limit' => 11,
+        $table->addColumn('expire_on', 'string', [
             'default' => null,
+            'limit' => 255,
             'null' => false,
         ]);
         $table->addColumn('is_deleted', 'boolean', [
