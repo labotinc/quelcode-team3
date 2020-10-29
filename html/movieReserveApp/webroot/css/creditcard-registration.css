@@ -46,9 +46,6 @@ li {
 .creditcard-registration-fieldset .security-code {
     width: 110%;
 }
-/* .creditcard-registration-fieldset .privacy-policy .form-error {
-    float: left;
-} */
 .creditcard-registration-fieldset .error input {
     margin-bottom: 8px;
 }
@@ -64,12 +61,12 @@ li {
 }
 #privacy-policy {
     width: 20px;
+    margin-bottom: 0;
 }
 .creditcard-registration-fieldset-below {
     border: none;
     float: left;
 }
-
 .creditcard-registration-fieldset .error-message {
     color: #f46161;
 }
