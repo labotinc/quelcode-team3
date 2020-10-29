@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Form\CreditCardForm;
 
 /**
  * CreditCards Controller
@@ -11,8 +12,15 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\CreditCard[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class CreditCardsController extends BaseController
+class CreditCardsController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
+
+
     /**
      * Index method
      *
@@ -51,15 +59,17 @@ class CreditCardsController extends BaseController
      */
     public function add()
     {
-        $user_id = $this->Auth->user('id');
-        $this->set(compact('user_id'));
+        $creditcard_form = new CreditCardForm();
         $creditCard = $this->CreditCards->newEntity();
         if ($this->request->is('post')) {
             $creditCard = $this->CreditCards->patchEntity($creditCard, $this->request->getData());
-            if ($this->CreditCards->save($creditCard)) {
-                $this->Flash->success(__('The credit card has been saved.'));
+            // var_dump($this->request->getData());
+            // var_dump($creditCard);
 
-                return $this->redirect(['action' => 'index']);
+            if ($this->CreditCards->save($creditCard)) {
+                // var_dump($this->request->getData());
+
+                return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
             }
 
             $this->Flash->error(__('The credit card could not be saved. Please, try again.'));

@@ -19,6 +19,21 @@ class CustomValidation extends Validation
       return false;
     }
   }
+
+  /**
+   * 有効期限
+   * @param string $value
+   * @return bool
+   */
+  public static function expireOn($value)
+  {
+    if (preg_match('/^[0-9]{2}\/[0-9]{2}$/', $value)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   /**
    * 半角英字
    * @param string $value
@@ -27,6 +42,19 @@ class CustomValidation extends Validation
   public static function halfSizeEnglish($value)
   {
     if (preg_match('/^[a-zA-Z]+$/', $value)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  /**
+   * 半角英字
+   * @param string $value
+   * @return bool
+   */
+  public static function blank($value)
+  {
+    if ($value) {
       return true;
     } else {
       return false;
