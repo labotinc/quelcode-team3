@@ -78,15 +78,14 @@ class CreditCardsTable extends Table
 
 
         $validator
-            ->date('expire_on', ['my'], '有効期限が間違っています')
+            // ->date('expire_on', ['my'], '有効期限が間違っています')
             ->requirePresence('expire_on', 'create')
-            ->notEmptyDate('expire_on', '空白になっています')
-            ->add('expire_on', 'halfSizeNumber', ['rule' => 'halfSizeNumber', 'provider' => 'Custom', 'message' => '半角数字以外の文字が使われています']);
+            ->notEmptyDate('expire_on', '空白になっています');
+        // ->add('expire_on', 'expireOn', ['rule' => 'expireOn', 'provider' => 'Custom', 'message' => '半角数字以外の文字が使われています']);
 
 
         $validator
             ->boolean('is_deleted')
-            ->requirePresence('is_deleted', 'create')
             ->notEmptyString('is_deleted');
 
         return $validator;
