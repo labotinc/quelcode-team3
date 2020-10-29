@@ -1,4 +1,5 @@
 <?php
+
 use Migrations\AbstractMigration;
 
 class CreateCreditCards extends AbstractMigration
@@ -28,7 +29,8 @@ class CreateCreditCards extends AbstractMigration
             'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('expire_on', 'date', [
+        $table->addColumn('expire_on', 'integer', [
+            'limit' => 11,
             'default' => null,
             'null' => false,
         ]);
