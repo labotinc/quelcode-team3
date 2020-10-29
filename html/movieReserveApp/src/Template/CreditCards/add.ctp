@@ -14,7 +14,7 @@
                 <?php
                 echo $this->Form->control('user_id', [
                     'type' => 'hidden',
-                    'value' => $user_id
+                    'value' => $authuser['id']
                 ]);
 
                 echo $this->Form->control('number', [
@@ -34,23 +34,30 @@
                     'label' => false,
                     'class' => 'password_check'
                 ]);
-                ?>
-                <p>/</p>
-                <?php
-                echo $this->Form->control('expire_on', [
-                    'type' => 'textbox',
-                    'placeholder' => '有効期限',
+                echo $this->Form->control('security_code', [
+                    'type' => 'security_code',
+                    'placeholder' => 'セキュリティコード',
                     'required' => false,
                     'label' => false,
                     'class' => 'password_check'
                 ]);
 
                 ?>
+                <label>
+                    <?php
+                    echo $this->Form->checkbox('privacy_policy', [
+                        'value' => 'accept',
+                        'required' => 'true',
+                    ]);
+                    ?>利用規約、プライバシーポリシーに同意の上、ご確認ください。
+
+                </label>
             </fieldset>
             <?php
             echo $this->Form->submit(__('会員登録'), [
                 'class' => 'signup-submission-btn'
             ]);
+
             echo $this->Form->end();
             ?>
         </div>
