@@ -12,20 +12,16 @@ class CreditCardForm extends Form
     $validator->setProvider('Custom', 'App\Model\Validation\CustomValidation');
 
     $validator
-      ->add('security_code', 'blank', [
-        'provider' => 'customValidate',
-        'rule' => 'blank',
-        'message' => '空白になっています',
-      ])
+      ->notEmptyString('security_code', '空白になっています')
       ->add('security_code', 'halfSizeNumber', [
-        'provider' => 'customValidate',
+        'provider' => 'Custom',
         'rule' => 'halfSizeNumber',
         'message' => '半角数字以外の文字が使われています',
       ]);
 
     $validator
       ->add('privacy_policy', 'blank', [
-        'provider' => 'customValidate',
+        'provider' => 'Custom',
         'rule' => 'blank',
         'message' => '利用規約に同意しなければ、登録することはできません',
       ]);

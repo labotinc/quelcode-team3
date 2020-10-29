@@ -63,16 +63,21 @@ class CreditCardsController extends AppController
         $creditCard = $this->CreditCards->newEntity();
         if ($this->request->is('post')) {
             $creditCard = $this->CreditCards->patchEntity($creditCard, $this->request->getData());
-            // var_dump($this->request->getData());
-            // var_dump($creditCard);
-
-            if ($this->CreditCards->save($creditCard)) {
-                // var_dump($this->request->getData());
-
-                return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
+            if ($creditcard_form->validate($this->request->getData()) && empty($creditcard_form->getErrors())) {
+                if ($this->CreditCards->save($creditCard)) {
+                    return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The credit card could not be saved. Please, try again.'));
+                }
+            } else {
+                //Formクラスのエラーをエンティティにセット
+                $securityCodeError = $creditcard_form->getErrors()['security_code'];
+                $privacyPolicyError = $creditcard_form->getErrors()['privacy_policy'];
+                $creditCard->setErrors([
+                    'security_code' => $securityCodeError,
+                    'privacy_policy' => $privacyPolicyError
+                ]);
             }
-
-            $this->Flash->error(__('The credit card could not be saved. Please, try again.'));
         }
         $this->set(compact('creditCard'));
     }
