@@ -65,8 +65,8 @@ class AppController extends Controller
             'logoutRedirect' => [
                 'controller' => 'Index',
                 'action' => 'index',
-            ]
-
+            ],
+            'authError' => 'ログインしてください。',
         ]);
 
         $this->set('authuser', $this->Auth->user());
@@ -75,6 +75,11 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['login', 'logout', 'index']);
     }
 
     public function isAuthorized($user)
