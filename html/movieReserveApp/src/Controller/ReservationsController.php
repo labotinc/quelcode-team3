@@ -57,16 +57,6 @@ class ReservationsController extends AppController
     $user_id = $this->Auth->user('id');
     $schedule_id = $this->request->query['schedule_id'];
 
-    $reservation = $this->Reservations->newEntity();
-    if ($this->request->is('post')) {
-      $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
-      if ($this->Reservations->save($reservation)) {
-        // 処理が成功した際は新規作成したデータのIDをクエリパラメータとして渡し、予約詳細入力画面に遷移する
-        return $this->redirect(['action' => 'details', 'id' => $reservation->id]);
-      }
-      // DBへのデータ挿入失敗時のエラーメッセージ
-      $this->Flash->error(__('予約処理が正常に行われませんでした。座席選択後「決定」ボタンを押してください。'));
-    }
     // 有効期限切れの予約情報を取得する処理
     $current_time = new DateTime();
     $allCancelled = $this->Reservations->find('all', [
@@ -94,6 +84,26 @@ class ReservationsController extends AppController
     if ($reservations) {
       foreach ($reservations as $eachReservation) {
         $reservedSeats[] = $eachReservation['seat_number'];
+      }
+    }
+
+    $reservation = $this->Reservations->newEntity();
+    if ($this->request->is('post')) {
+      $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
+      $reservation->expire_at = new DateTime('+1 hours');
+      // 座席選択中に他ユーザによって座席が選択された場合は以降の処理に移らない（同一上映回で同じ座席への重複が発生するのを防ぐ）
+      if (in_array($reservation->seat_number, $reservedSeats)) {
+        // 「決定ボタン」押下前に他ユーザによって選択中の座席予約がされた場合のメッセージ
+        $this->Flash->error(__('申し訳ございませんが、別の座席をお選びください。'));
+        // 選択可能な座席の場合は処理を進める
+      } else {
+        if ($this->Reservations->save($reservation)) {
+          // 処理が成功した際は新規作成したデータのIDをクエリパラメータとして渡し、予約詳細入力画面に遷移する
+          return $this->redirect(['action' => 'details', 'id' => $reservation->id]);
+        } else {
+          // DBへのデータ挿入失敗時のエラーメッセージ
+          $this->Flash->error(__('予約処理が正常に行われませんでした。座席選択後「決定」ボタンを押してください。'));
+        }
       }
     }
 
