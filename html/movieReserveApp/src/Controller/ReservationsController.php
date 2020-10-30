@@ -91,7 +91,7 @@ class ReservationsController extends AppController
     if ($this->request->is('post')) {
       $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
       $reservation->expire_at = new DateTime('+1 hours');
-      // 座席選択中に他ユーザによって座席が選択された場合は以降の処理に移らない（同一上映回で同じ座席への重複が発生するのを防ぐ）
+      // 座席選択中に他ユーザによって座席が予約された場合は以降の処理に移らない（同一上映回で同じ座席への重複が発生するのを防ぐ）
       if (in_array($reservation->seat_number, $reservedSeats)) {
         // 「決定ボタン」押下前に他ユーザによって選択中の座席予約がされた場合のメッセージ
         $this->Flash->error(__('申し訳ございませんが、別の座席をお選びください。'));
