@@ -51,13 +51,17 @@
       <?php
       if (!isset($authuser)) {
         $login = 'ログイン';
+        echo $this->Html->link(__($login), [
+          'controller' => 'Users',
+          'action' => 'login'
+        ]);
       } else {
         $login = 'マイページ';
+        echo $this->Html->link(__($login), [
+          'controller' => 'Mypage',
+          'action' => 'index'
+        ]);
       }
-      echo $this->Html->link(__($login), [
-        'controller' => 'Mypage',
-        'action' => 'index'
-      ])
       ?>
     </p>
   </header>
