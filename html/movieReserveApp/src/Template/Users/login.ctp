@@ -1,4 +1,4 @@
-<main>
+<main class="login-outer-wrapper">
     <section class="login-main">
         <h1>ログイン</h1>
         <div class="login-form-wrapper">
