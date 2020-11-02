@@ -65,10 +65,13 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                return $this->redirect(['action' => 'welcome']);
+            // 入力データに問題がなければDBへの挿入を行う
+            if (empty($user->hasErrors())) {
+                if ($this->Users->save($user)) {
+                    return $this->redirect(['action' => 'welcome']);
+                }
+                $this->Flash->error(__('会員登録が正常に行えませんでした。'));
             }
-            $this->Flash->error(__('会員登録が正常に行えませんでした。'));
         }
         $this->set(compact('user'));
     }

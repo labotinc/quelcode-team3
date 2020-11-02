@@ -1,4 +1,4 @@
-<main>
+<main class="top-main">
   <div class="slideshow-container">
     <div class="mySlides fade">
       <?= $this->Html->image('movies_slideshow/2020-05-22 16.13.13@2x.png', ['style' => 'width:100%']); ?>
