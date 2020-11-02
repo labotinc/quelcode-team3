@@ -26,7 +26,7 @@ class CreateReservations extends AbstractMigration
         $table->addColumn('regular_price_id', 'integer', [
             'default' => null,
             'limit' => 11,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('discount_id', 'integer', [
             'default' => null,
@@ -41,15 +41,15 @@ class CreateReservations extends AbstractMigration
         $table->addColumn('purchased_price', 'integer', [
             'default' => null,
             'limit' => 11,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('is_confirmed', 'boolean', [
             'default' => 0,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('expire_at', 'datetime', [
             'default' => null,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('is_cancelled', 'boolean', [
             'default' => 0,
