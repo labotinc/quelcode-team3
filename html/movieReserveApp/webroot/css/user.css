@@ -5,6 +5,9 @@ li {
   list-style: none;
 }
 /* 会員登録画面 */
+.signup-outer-wrapper {
+  padding-bottom: 247px;
+}
 .signup-main > h1 {
   letter-spacing: 0.89px;
   font-size: 25px;
@@ -66,6 +69,9 @@ li {
 /* 会員登録画面おわり */
 
 /* 会員登録完了画面 */
+.welcome-main {
+  padding-bottom: 367px;
+}
 .welcome-wrapper {
   margin: 0 auto;
   width: 736px;
@@ -98,6 +104,9 @@ li {
 /* 会員登録完了画面おわり */
 
 /* ログイン画面 */
+.login-outer-wrapper {
+  padding-bottom: 279px;
+}
 .login-main > h1 {
   letter-spacing: 0.89px;
   font-size: 25px;

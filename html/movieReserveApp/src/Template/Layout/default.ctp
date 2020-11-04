@@ -15,7 +15,8 @@
   echo $this->Html->css('schedule.css');
   echo $this->Html->css('user.css');
   echo $this->Html->css('prices-discounts.css');
-  echo $this->Html->css('creditcard-registration.css')
+  echo $this->Html->css('creditcard-registration.css');
+  echo $this->Html->css('reservations.css');
 
   ?>
 </head>
@@ -52,17 +53,22 @@
       <?php
       if (!isset($authuser)) {
         $login = 'ログイン';
+        echo $this->Html->link(__($login), [
+          'controller' => 'Users',
+          'action' => 'login'
+        ]);
       } else {
         $login = 'マイページ';
+        echo $this->Html->link(__($login), [
+          'controller' => 'Mypage',
+          'action' => 'index'
+        ]);
       }
-      echo $this->Html->link(__($login), [
-        'controller' => 'Mypage',
-        'action' => 'index'
-      ])
       ?>
     </p>
   </header>
 
+  <?= $this->Flash->render() ?>
   <?php echo $this->fetch('content') ?>
 
   <footer class="page-footer">
@@ -92,8 +98,9 @@
     </ul>
   </footer>
 
+  <?php echo $this->Html->script('jquery.min'); ?>
   <?php echo $this->Html->script('slideshow'); ?>
-
+  <?php echo $this->Html->script('reservations'); ?>
 </body>
 
 </html>
