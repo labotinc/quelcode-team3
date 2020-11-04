@@ -41,7 +41,7 @@ class CustomValidation extends Validation
    */
   public static function halfSizeEnglish($value)
   {
-    if (preg_match('/^[a-zA-Z]+$/', $value)) {
+    if (preg_match('/^[a-zA-Z]+[\s][a-zA-Z]+$/', $value)) {
       return true;
     } else {
       return false;
