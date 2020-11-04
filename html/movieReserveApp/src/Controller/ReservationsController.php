@@ -175,7 +175,10 @@ class ReservationsController extends AppController
 
     public function detail() {
         $reservations = $this->Reservations->find('all')
-          ->where(['user_id' => $this->Auth->user('id')])
+          ->where([
+              'user_id' => $this->Auth->user('id'),
+              'is_cancelled' => 0,
+              'is_deleted' => 0])
           ->contain(['schedules' => ['movies']]);
 
         $this->set(compact('reservations'));
