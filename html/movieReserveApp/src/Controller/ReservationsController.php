@@ -126,6 +126,27 @@ class ReservationsController extends AppController
     }
 
     /**
+     * Details method
+     * @param string|null $id Reservation id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+
+    public function details()
+    {
+        $user_id = $this->Auth->user('id');
+        $id = 1;
+        $reservation_id = $this->request->query['id'];
+        $reservation_detail = $this->Reservations->find()->contain('Movies')
+            ->where([
+                'id' => $reservation_id,
+            ]);
+        var_dump($reservation_id);
+        $this->set(compact('reservation_detail', 'regular_price'));
+    }
+
+
+    /**
      * Edit method
      *
      * @param string|null $id Reservation id.
