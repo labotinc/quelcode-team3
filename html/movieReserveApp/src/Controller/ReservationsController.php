@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use DateTime;
 use Exception;
+use Seld\PharUtils\Timestamps;
 
 /**
  * Reservations Controller
@@ -15,6 +16,13 @@ use Exception;
  */
 class ReservationsController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadModel('Movies');
+        $this->loadModel('RegularPrices');
+        $this->loadModel('Schedules');
+    }
     /**
      * Index method
      *
@@ -134,15 +142,30 @@ class ReservationsController extends AppController
 
     public function details()
     {
-        $user_id = $this->Auth->user('id');
-        $id = 1;
+        // if ($this->request->getData('cansel')) {
+        //     var_dump($this->request->query['id']);
+        //     return $this->redirect(['action' => '#add']);
+        // }
         $reservation_id = $this->request->query['id'];
-        $reservation_detail = $this->Reservations->find()->contain('Movies')
-            ->where([
-                'id' => $reservation_id,
-            ]);
-        var_dump($reservation_id);
-        $this->set(compact('reservation_detail', 'regular_price'));
+        $id = 1;
+        $regular_price = $this->RegularPrices->get($id);
+        $reservation_detail = $this->Reservations->get($reservation_id);
+        $schedule = $this->Schedules->get($reservation_detail->schedule_id);
+        $week = array("日", "月", "火", "水", "木", "金", "土");
+        // var_dump($schedule->start_at->format('Y-m-d H:i:s'));
+        // var_dump($week[date("w", strtotime($schedule->start_at->format('Y-m-d H:i:s')))]);
+        // var_dump($schedule->start_at->format('m月d日 H:i'));
+        $movie_start_date = $schedule->start_at->format('m月d日');
+        $movie_start_week = $week[date("w", strtotime($schedule->start_at->format('Y-m-d H:i:s')))];
+        $movie_start_time = $schedule->start_at->format('H:i');
+        $movie_start = $movie_start_date . '(' . $movie_start_week . ')' . $movie_start_time;
+        $movie_end = $schedule->end_at->format('H:i');
+        $movie_time = $movie_start . '~' . $movie_end;
+        $movie = $this->Movies->get($schedule->movie_id);
+        $this->set(compact('reservation_detail', 'regular_price', 'movie', 'schedule', 'movie_time'));
+        // if ($this->request->getData('decision')) {
+        //     return $this->redirect(['action' => '#', 'id' => $reservation_id]);
+        // }
     }
 
 
