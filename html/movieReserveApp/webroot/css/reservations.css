@@ -79,22 +79,25 @@
 /* ここまで座席予約画面 */
 
 /* ここからマイページ予約詳細画面 */
-.reservations-top-table-container {
+.my-reservations-outer {
   padding: 120px 104px 88px 104px;
   margin: 0 auto;
   box-shadow: 0px 0px 6px #00000029;
   background-color: #FFF;
   max-width: 736px;
 }
+.my-reservations-inner {
+  margin-bottom: 64px;
+}
+.no-reservations {
+  margin-bottom: 40px;
+}
 .reservations-descriptions {
   display: flex;
   align-items: center;
   background: #F2F2F2;
-  margin: 0 auto;
+  margin: 0 auto 32px;
   position: relative;
-}
-.reservations-descriptions-no-reserve {
-    align-items: center;
 }
 .reservations-more-details {
   display: flex;

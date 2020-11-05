@@ -1,43 +1,45 @@
 <main class="mypage-top-container">
     <h2 class="mypage-top-header">予約詳細</h2>
-    <div class="reservations-top-table-container">
-        <?php if (empty($reservations)): ?>
-            <p>現在、予約はありません。</p>
-        <?php endif; ?>
+    <div class="my-reservations-outer">
         <!-- 予約表示 -->
-        <?php foreach ($reservations as $reservation) : ?>
-            <div class="reservations-descriptions-no-reserve">
-                <div class="reservations-descriptions">
-                    <div class="reservations-more-details">
-                        <div class="reservations-poster">
-                            <? $poster = $reservation['Movies']['thumbnail_file_name'] ?>
-                            <?= $this->Html->image("movies_small/$poster.png") ?>
+        <?php if (empty($reservations)) : ?>
+            <p class="no-reservations">現在予約はありません</p>
+        <?php else : ?>
+            <div class="my-reservations-inner">
+                <?php foreach ($reservations as $reservation) : ?>
+                    <div class="reservations-descriptions">
+                        <div class="reservations-more-details">
+                            <div class="reservations-poster">
+                                <? $poster = $reservation['Movies']['thumbnail_file_name'] ?>
+                                <?= $this->Html->image("movies_small/$poster.png") ?>
+                            </div>
+                            <div class="reservations-details">
+                                <div class="reservations-title">
+                                    <?= $reservation['Movies']['title'] ?>
+                                </div>
+                                <div class="reservations-date">
+                                    <span class="reservations-space"><?= date("m月d日", strtotime($reservation['Schedules']['start_at'])) ?>(<?= ToDay($reservation['Schedules']['start_at']->format('m-d')) ?>)&nbsp;<?= $reservation['Schedules']['start_at']->format('H:i') ?>〜<?php echo $reservation['Schedules']['end_at']->format('H:i') ?></span><?php echo $reservation->seat_number ?>
+                                </div>
+                                <div class="reservations-price">
+                                    <?= '&yen' . number_format($reservation->purchased_price) ?>
+                                </div>
+                            </div>
                         </div>
-                        <div class="reservations-details">
-                            <div class="reservations-title">
-                                <?= $reservation['Movies']['title'] ?>
-                            </div>
-                            <div class="reservations-date">
-                                <span class="reservations-space"><?= date("m月d日", strtotime($reservation['Schedules']['start_at'])) ?>(<?= ToDay($reservation['Schedules']['start_at']->format('m-d')) ?>)&nbsp;<?= $reservation['Schedules']['start_at']->format('H:i') ?>〜<?php echo $reservation['Schedules']['end_at']->format('H:i') ?></span><?php echo $reservation->seat_number ?>
-                            </div>
-                            <div class="reservations-price">
-                                <?= '&yen' . number_format($reservation->purchased_price) ?>
-                            </div>
+                        <!-- キャンセルボタン -->
+                        <div class="reservations-cancel">
+                            <p class="reservations-cancel-button"><?= $this->Html->link('キャンセル', ['controller' => 'Reservations', 'action' => 'cancel', '_full' => true]) ?></p>
                         </div>
                     </div>
-                    <!-- キャンセルボタン -->
-                    <div class="reservations-cancel">
-                        <p class="reservations-cancel-button"><?= $this->Html->link('キャンセル', ['controller' => 'Cancel', 'action' => '', '_full' => true]) ?></p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
+        <?php endif; ?>
         <!-- マイページに戻るボタン -->
         <div class="reservations-to-mypage-button">
             <?= $this->Html->link('マイページに戻る', [
-                'controller' => 'Mypage', 
-                'action' => 'index', 
-                '_full' => true]) 
+                'controller' => 'Mypage',
+                'action' => 'index',
+                '_full' => true
+            ])
             ?>
         </div>
     </div>
