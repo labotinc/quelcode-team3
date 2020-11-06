@@ -1,40 +1,62 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Reservation $reservation
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Reservations'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Schedules'), ['controller' => 'Schedules', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Schedule'), ['controller' => 'Schedules', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Regular Prices'), ['controller' => 'RegularPrices', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Regular Price'), ['controller' => 'RegularPrices', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Discounts'), ['controller' => 'Discounts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Discount'), ['controller' => 'Discounts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="reservations form large-9 medium-8 columns content">
-    <?= $this->Form->create($reservation) ?>
-    <fieldset>
-        <legend><?= __('Add Reservation') ?></legend>
+<main>
+  <h1 class="seat-reservation">座席予約</h1>
+  <div class="seats-outer-wrapper">
+    <div class="seats-inner-wrapper">
+      <ul class="seats-rows rows-left">
+        <!-- メンテナンス性を考慮し繰り返し処理で列番号を描画 -->
         <?php
-            echo $this->Form->control('schedule_id', ['options' => $schedules]);
-            echo $this->Form->control('user_id', ['options' => $users]);
-            echo $this->Form->control('regular_price_id', ['options' => $regularPrices]);
-            echo $this->Form->control('discount_id', ['options' => $discounts]);
-            echo $this->Form->control('seat_number');
-            echo $this->Form->control('purchased_price');
-            echo $this->Form->control('is_confirmed');
-            echo $this->Form->control('expire_at');
-            echo $this->Form->control('is_cancelled');
-            echo $this->Form->control('is_deleted');
+        for ($i = 1; $i <= $rows; $i++) {
+          echo "<li>{$i}</li>";
+        }
         ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+      </ul>
+      <?php
+      // 縦の列数だけ繰り返し処理で描画を行う
+      for ($i = 0; $i < $columns_length; $i++) {
+        $column = $columns[$i];
+        echo "<ul class='seats-columns'>";
+        echo "<li>{$column}</li>";
+        // 横の列数だけ繰り返し処理で描画を行う
+        for ($j = 1; $j <= $rows; $j++) {
+          $seat_id = $column . $j;
+          // 描画する席が予約済みの場合はクラス「unavailable」を付与し表示を変える
+          if (in_array($seat_id, $reservedSeats)) {
+            echo "<li class='unavailable' id='{$seat_id}'>";
+          } else {
+            echo "<li class='available' id='{$seat_id}'>";
+          }
+        }
+        echo "</ul>";
+      }
+      ?>
+      <ul class="seats-rows rows-right">
+        <?php
+        for ($i = 1; $i <= $rows; $i++) {
+          echo "<li>{$i}</li>";
+        }
+        ?>
+      </ul>
+    </div>
+    <?=
+      $this->Form->create($reservation, [
+        'type' => 'post',
+        'url' => [
+          'action' => 'add',
+          'schedule_id' => $schedule_id
+        ],
+        'novalidate' => true,
+      ]);
+    ?>
+    <?php
+    echo $this->Form->hidden('seat_number', ['id' => 'seat-number']);
+    echo $this->Form->hidden('user_id', ['value' => $user_id]);
+    echo $this->Form->hidden('schedule_id', ['value' => $schedule_id]);
+    ?>
+    <?php
+    echo $this->form->submit(__('決定'), [
+      'class' => 'seats-reservation-btn'
+    ]);
+    echo $this->Form->end();
+    ?>
+  </div>
+</main>

@@ -80,29 +80,20 @@ class ReservationsTable extends Table
             ->notEmptyString('seat_number');
 
         $validator
-            ->integer('purchased_price')
-            ->requirePresence('purchased_price', 'create')
-            ->notEmptyString('purchased_price');
+            ->integer('purchased_price');
 
         $validator
-            ->boolean('is_confirmed')
-            ->requirePresence('is_confirmed', 'create')
-            ->notEmptyString('is_confirmed');
+            ->boolean('is_confirmed');
 
         $validator
             ->dateTime('expire_at')
-            ->requirePresence('expire_at', 'create')
-            ->notEmptyDateTime('expire_at');
+            ->requirePresence('expire_at', 'create');
 
         $validator
-            ->boolean('is_cancelled')
-            ->requirePresence('is_cancelled', 'create')
-            ->notEmptyString('is_cancelled');
+            ->boolean('is_cancelled');
 
         $validator
-            ->boolean('is_deleted')
-            ->requirePresence('is_deleted', 'create')
-            ->notEmptyString('is_deleted');
+            ->boolean('is_deleted');
 
         return $validator;
     }
@@ -119,7 +110,7 @@ class ReservationsTable extends Table
         $rules->add($rules->existsIn(['schedule_id'], 'Schedules'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['regular_price_id'], 'RegularPrices'));
-        $rules->add($rules->existsIn(['discount_id'], 'Discounts'));
+				$rules->add($rules->existsIn(['discount_id'], 'Discounts'));
 
         return $rules;
     }

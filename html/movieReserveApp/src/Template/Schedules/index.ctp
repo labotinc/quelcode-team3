@@ -53,7 +53,15 @@
             <p class="schedule-screen-time">
               <span class="schedule-movie-start"><?= date("G:i", strtotime($schedule->start_at)) ?></span><span class="schedule-movie-end">〜<?= date("G:i", strtotime($schedule->end_at)) ?></span>
             </p>
-            <p class="schedule-reserve-button"><a href="#">予約購入</a></p>
+            <p class="schedule-reserve-button">
+              <?php 
+                echo $this->Html->link(__('予約購入'), [
+                'controller' => 'Reservations',
+                'action' => 'add',
+                'schedule_id' => $schedule->id
+                ])
+              ?>
+            </p>
           </li>
           <? endforeach;?>
         </ul>

@@ -1,4 +1,4 @@
-<main>
+<main class="signup-outer-wrapper">
   <section class="signup-main">
     <h1>会員登録</h1>
     <div class="signup-form-wrapper">

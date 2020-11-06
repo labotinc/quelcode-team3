@@ -24,6 +24,9 @@ main {
   padding-top: 80px;
   padding-bottom: 206px;
 }
+.top-main {
+  padding-bottom: 206px;
+}
 .logo-1 {
   color: #FFB100;
   margin-right: 4px;
