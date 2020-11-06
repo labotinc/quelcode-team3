@@ -1,11 +1,12 @@
 <main class="mypage-top-container">
     <h2 class="mypage-top-header">予約詳細</h2>
     <div class="my-reservations-outer">
-        <!-- 予約表示 -->
+        <!-- 有効な予約情報があるかないかと表示分けを行う -->
         <?php if (empty($reservations)) : ?>
             <p class="no-reservations">現在予約はありません</p>
         <?php else : ?>
             <div class="my-reservations-inner">
+                <!-- 有効な予約情報があればそれぞれ表示する -->
                 <?php foreach ($reservations as $reservation) : ?>
                     <div class="reservations-descriptions">
                         <div class="reservations-more-details">
@@ -18,7 +19,7 @@
                                     <?= $reservation['Movies']['title'] ?>
                                 </div>
                                 <div class="reservations-date">
-                                    <span class="reservations-space"><?= date("m月d日", strtotime($reservation['Schedules']['start_at'])) ?>(<?= ToDay($reservation['Schedules']['start_at']->format('m-d')) ?>)&nbsp;<?= $reservation['Schedules']['start_at']->format('H:i') ?>〜<?php echo $reservation['Schedules']['end_at']->format('H:i') ?></span><?php echo $reservation->seat_number ?>
+                                    <span class="reservations-space"><?= date("m月d日", strtotime($reservation['Schedules']['start_at'])) ?>(<?= ToDay($reservation['Schedules']['start_at']) ?>)&nbsp;<?= $reservation['Schedules']['start_at']->format('H:i') ?>〜<?php echo $reservation['Schedules']['end_at']->format('H:i') ?></span><?php echo $reservation->seat_number ?>
                                 </div>
                                 <div class="reservations-price">
                                     <?= '&yen' . number_format($reservation->purchased_price) ?>
