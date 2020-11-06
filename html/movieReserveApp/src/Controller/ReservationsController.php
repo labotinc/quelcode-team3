@@ -29,6 +29,7 @@ class ReservationsController extends AppController
         $allCancelled = $this->Reservations->find('all', [
             'conditions' => array(
                 'expire_at <' => $current_time,
+                'is_confirmed' => false,
                 'is_cancelled' => false,
             )
         ]);
