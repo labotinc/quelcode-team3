@@ -67,7 +67,7 @@ class CreditCardsController extends AppController
                 if ($this->CreditCards->save($creditCard)) {
                     return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The credit card could not be saved. Please, try again.'));
+                    $this->Flash->error(__('クレジットカードの登録に失敗しました.'));
                 }
             } else {
                 //Formクラスのエラーをエンティティにセット
