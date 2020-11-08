@@ -63,23 +63,31 @@ class CreditCardsController extends AppController
         $creditCard = $this->CreditCards->newEntity();
         if ($this->request->is('post')) {
             $creditCard = $this->CreditCards->patchEntity($creditCard, $this->request->getData());
-            if ($creditcard_form->validate($this->request->getData()) && empty($creditcard_form->getErrors())) {
+            //FormクラスのエラーとModelのバリデーションエラーがない場合
+            if ($creditcard_form->validate($this->request->getData()) && empty($creditCard->getErrors())) {
                 if ($this->CreditCards->save($creditCard)) {
                     return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
                 } else {
                     $this->Flash->error(__('クレジットカードの登録に失敗しました.'));
                 }
             } else {
-                //Formクラスのエラーをエンティティにセット
-                $securityCodeError = $creditcard_form->getErrors()['security_code'];
-                $privacyPolicyError = $creditcard_form->getErrors()['privacy_policy'];
-                $creditCard->setErrors([
-                    'security_code' => $securityCodeError,
-                    'privacy_policy' => $privacyPolicyError
-                ]);
+                //セキュリティーコードのエラーをセット
+                if (!empty($creditcard_form->getErrors()['security_code'])) {
+                    $securityCodeError = $creditcard_form->getErrors()['security_code'];
+                    $creditCard->setErrors([
+                        'security_code' => $securityCodeError,
+                    ]);
+                }
+                //プライバシーポリシーのエラーをセット
+                if (!empty($creditcard_form->getErrors()['privacy_policy'])) {
+                    $privacyPolicyError = $creditcard_form->getErrors()['privacy_policy'];
+                    $creditCard->setErrors([
+                        'privacy_policy' => $privacyPolicyError
+                    ]);
+                }
             }
+            $this->set(compact('creditCard'));
         }
-        $this->set(compact('creditCard'));
     }
 
     /**
