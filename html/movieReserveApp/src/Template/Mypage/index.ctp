@@ -14,7 +14,7 @@
       <tr>
         <th>決済情報</th>
         <!-- TODO: 後でactionを適切なものに置き換える -->
-        <td class="mypage-top-link-button"><?= $this->Html->link('登録する', ['controller' => 'Mypage', 'action' => 'creditcard_details', '_full' => true]) ?></td>
+        <td class="mypage-top-link-button"><?= $this->Html->link('登録する', ['controller' => 'CreditCards', 'action' => 'add', '_full' => true]) ?></td>
       </tr>
     </table>
   </div>

@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Form\CreditCardForm;
 
 /**
  * CreditCards Controller
@@ -12,6 +14,13 @@ use App\Controller\AppController;
  */
 class CreditCardsController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
+
+
     /**
      * Index method
      *
@@ -50,18 +59,35 @@ class CreditCardsController extends AppController
      */
     public function add()
     {
+        $creditcard_form = new CreditCardForm();
         $creditCard = $this->CreditCards->newEntity();
         if ($this->request->is('post')) {
             $creditCard = $this->CreditCards->patchEntity($creditCard, $this->request->getData());
-            if ($this->CreditCards->save($creditCard)) {
-                $this->Flash->success(__('The credit card has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            //FormクラスのエラーとModelのバリデーションエラーがない場合
+            if ($creditcard_form->validate($this->request->getData()) && empty($creditCard->getErrors())) {
+                if ($this->CreditCards->save($creditCard)) {
+                    return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
+                } else {
+                    $this->Flash->error(__('クレジットカードの登録に失敗しました.'));
+                }
+            } else {
+                //セキュリティーコードのエラーをセット
+                if (!empty($creditcard_form->getErrors()['security_code'])) {
+                    $securityCodeError = $creditcard_form->getErrors()['security_code'];
+                    $creditCard->setErrors([
+                        'security_code' => $securityCodeError,
+                    ]);
+                }
+                //プライバシーポリシーのエラーをセット
+                if (!empty($creditcard_form->getErrors()['privacy_policy'])) {
+                    $privacyPolicyError = $creditcard_form->getErrors()['privacy_policy'];
+                    $creditCard->setErrors([
+                        'privacy_policy' => $privacyPolicyError
+                    ]);
+                }
             }
-            $this->Flash->error(__('The credit card could not be saved. Please, try again.'));
+            $this->set(compact('creditCard'));
         }
-        $users = $this->CreditCards->Users->find('list', ['limit' => 200]);
-        $this->set(compact('creditCard', 'users'));
     }
 
     /**

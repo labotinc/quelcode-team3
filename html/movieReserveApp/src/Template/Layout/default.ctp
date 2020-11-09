@@ -15,7 +15,9 @@
   echo $this->Html->css('schedule.css');
   echo $this->Html->css('user.css');
   echo $this->Html->css('prices-discounts.css');
+  echo $this->Html->css('creditcard-registration.css');
   echo $this->Html->css('reservations.css');
+
   ?>
 </head>
 
