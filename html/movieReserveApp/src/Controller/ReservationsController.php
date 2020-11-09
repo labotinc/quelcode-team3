@@ -179,15 +179,16 @@ class ReservationsController extends AppController
 
     public function detail()
     {
-        $today = new Date();
+        $current_time = date("Y/m/d H:i:s");
         try {
             $reservations = $this->Reservations->find()
                 // 有効かつアクセスした日以降の予約情報を取得
                 ->where([
                     'user_id' => $this->Auth->user('id'),
+                    'is_confirmed' => true,
                     'is_cancelled' => false,
                     'is_deleted' => false,
-                    'end_at >' => $today
+                    'end_at >' => $current_time
                 ])
                 ->contain(['schedules' => ['movies']])
                 // 上映開始時刻、座席番号の順番でソートする
