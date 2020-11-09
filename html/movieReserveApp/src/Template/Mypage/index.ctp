@@ -9,7 +9,7 @@
       <tr>
         <th>予約確認</th>
         <!-- TODO: 後でactionを適切なものに置き換える -->
-        <td class="mypage-top-link-button"><?= $this->Html->link('詳細', ['controller' => 'Mypage', 'action' => 'reserve_details', '_full' => true]) ?></td>
+        <td class="mypage-top-link-button"><?= $this->Html->link('詳細', ['controller' => 'Reservations', 'action' => 'detail', '_full' => true]) ?></td>
       </tr>
       <tr>
         <th>決済情報</th>
