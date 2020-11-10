@@ -5,6 +5,9 @@ li {
     list-style: none;
 }
 /* 会員登録画面 */
+.card-registration-main {
+    margin-bottom: 160px;
+}
 .creditcard-registration-main > h1 {
     letter-spacing: 0.89px;
     font-size: 25px;
@@ -49,11 +52,11 @@ li {
 .creditcard-registration-fieldset .error input {
     margin-bottom: 8px;
 }
-.creditcard-registration-fieldset .error {
-    margin-bottom: 41px;
-}
 .privacy-policy .form-error {
     float: left;
+}
+label {
+    font-size: 10.5px;
 }
 .creditcard-registration-fieldset-medium .error:last-child {
     margin-bottom: 61px;
@@ -66,6 +69,7 @@ li {
 .creditcard-registration-fieldset-below {
     border: none;
     float: left;
+    margin-bottom: 48px;
 }
 .creditcard-registration-fieldset .error-message {
     color: #f46161;

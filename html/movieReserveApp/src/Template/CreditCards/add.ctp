@@ -1,4 +1,4 @@
-<main>
+<main class="card-registration-main">
     <section class="creditcard-registration-main">
         <h1>決済情報</h1>
         <div class="creditcard-registration-wrapper">
@@ -50,7 +50,7 @@
                     echo $this->Form->control('privacy_policy', [
                         'type' => 'checkbox',
                         'required' => 'false',
-                        'label' => '利用規約、プライバシーポリシーに同意の上、ご確認ください。',
+                        'label' => '利用規約・プライバシーポリシーに同意の上、ご確認ください。',
                         'class' => 'privacy-policy'
                     ]);
                     ?>
