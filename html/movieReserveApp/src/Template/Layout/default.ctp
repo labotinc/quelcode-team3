@@ -17,7 +17,6 @@
   echo $this->Html->css('prices-discounts.css');
   echo $this->Html->css('creditcard-registration.css');
   echo $this->Html->css('reservations.css');
-
   ?>
 </head>
 
@@ -51,11 +50,18 @@
     </nav>
     <p class="login_button">
       <?php
+      $url = $_SERVER['REQUEST_URI'];
       if (!isset($authuser)) {
         $login = 'ログイン';
         echo $this->Html->link(__($login), [
           'controller' => 'Users',
           'action' => 'login'
+        ]);
+      } elseif (strstr($url, 'mypage')) {
+        $login = 'ログアウト';
+        echo $this->Html->link(__($login), [
+          'controller' => 'Users',
+          'action' => 'logout'
         ]);
       } else {
         $login = 'マイページ';
