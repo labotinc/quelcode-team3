@@ -58,7 +58,7 @@
 
             </fieldset>
             <?php
-            echo $this->Form->submit(__('会員登録'), [
+            echo $this->Form->submit(__('登録'), [
                 'class' => 'creditcard-registration-submission-btn'
             ]);
 
