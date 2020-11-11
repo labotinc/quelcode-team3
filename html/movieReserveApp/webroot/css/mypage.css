@@ -37,7 +37,9 @@
   text-align: right;
   padding-bottom: 40px;
 }
-
+.mypage-top-link-button span {
+  margin-right: 8px;
+}
 .mypage-top-link-button a{
   background-color: #F5AE0B;
   padding : 8px 16px;
