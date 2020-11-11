@@ -4,7 +4,7 @@ body {
 li {
     list-style: none;
 }
-/* 会員登録画面 */
+/* 決済情報登録画面 */
 .card-registration-main {
     margin-bottom: 160px;
 }
@@ -34,7 +34,25 @@ li {
     padding: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
+}
+.card-number, .card-holder {
     margin-bottom: 60px;
+}
+.card-number {
+    display: flex;
+    position: relative;
+}
+#number {
+    width: 270px;
+}
+.card-icons {
+    position: absolute;
+    top: 10px;
+    left: 270px;
+}
+.fab {
+    font-size: 26px;
+    opacity: .3;
 }
 .creditcard-registration-fieldset input::placeholder {
     opacity: 0.3;
@@ -42,6 +60,7 @@ li {
 .creditcard-registration-fieldset-medium {
     border: none;
     display: flex;
+    margin-bottom: 60px;
 }
 .creditcard-registration-fieldset .expire-on {
     width: 80%;
@@ -59,7 +78,6 @@ label {
     font-size: 10.5px;
 }
 .creditcard-registration-fieldset-medium .error:last-child {
-    margin-bottom: 61px;
     margin-left: 29px;
 }
 #privacy-policy {
@@ -85,6 +103,4 @@ label {
     margin-bottom: 0;
     width: 100%;
 }
-/* 会員登録画面おわり */
-
-/* 会員登録完了画面 */
+/* 決済情報登録画面おわり */

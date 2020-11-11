@@ -16,18 +16,29 @@
                     'type' => 'hidden',
                     'value' => $authuser['id']
                 ]);
-
-                echo $this->Form->control('number', [
-                    'placeholder' => 'クレジットカード番号',
-                    'required' => false,
-                    'label' => false
-                ]);
-                echo $this->Form->control('holder_name', [
-                    'placeholder' => 'クレジットカード名義',
-                    'required' => false,
-                    'label' => false
-                ]);
                 ?>
+                <div class="card-number">
+                    <?php
+                    echo $this->Form->control('number', [
+                        'placeholder' => 'クレジットカード番号',
+                        'required' => false,
+                        'label' => false
+                    ]);
+                    ?>
+                    <div class="card-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+                <div class="card-holder">
+                    <?php
+                    echo $this->Form->control('holder_name', [
+                        'placeholder' => 'クレジットカード名義',
+                        'required' => false,
+                        'label' => false
+                    ]);
+                    ?>
+                </div>
                 <fieldset class="creditcard-registration-fieldset-medium">
                     <?php
                     echo $this->Form->control('expire_on', [
