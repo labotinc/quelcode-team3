@@ -35,8 +35,11 @@ li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
 }
-.card-number, .card-holder {
-    margin-bottom: 60px;
+.card-number {
+    margin-bottom: 44px;
+}
+.card-holder {
+    margin-bottom: 36px;
 }
 .card-number {
     display: flex;
@@ -60,7 +63,7 @@ li {
 .creditcard-registration-fieldset-medium {
     border: none;
     display: flex;
-    margin-bottom: 60px;
+    margin-bottom: 61px;
 }
 .creditcard-registration-fieldset .expire-on {
     width: 80%;
@@ -88,6 +91,12 @@ label {
     border: none;
     float: left;
     margin-bottom: 48px;
+}
+.card-number .error,
+.card-holder .error,
+.creditcard-registration-fieldset-medium .error,
+.creditcard-registration-fieldset-below .error {
+    margin-bottom: -19px;
 }
 .creditcard-registration-fieldset .error-message {
     color: #f46161;
