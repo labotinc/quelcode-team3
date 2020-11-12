@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Date;
 use DateTime;
 use Exception;
 use Seld\PharUtils\Timestamps;
@@ -28,6 +29,24 @@ class ReservationsController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
+    public function initialize()
+    {
+        parent::initialize();
+        // 有効期限切れの予約情報を取得する処理
+        $current_time = new DateTime();
+        $allCancelled = $this->Reservations->find('all', [
+            'conditions' => array(
+                'expire_at <' => $current_time,
+                'is_confirmed' => false,
+                'is_cancelled' => false,
+            )
+        ]);
+        // 座席予約画面が呼び出された直後に、有効期限切れの予約情報のキャンセルフラグを「1」とする処理
+        foreach ($allCancelled as $cancelled) {
+            $cancelled->is_cancelled = true;
+            $this->Reservations->save($cancelled);
+        }
+    }
 
     public function index()
     {
@@ -66,19 +85,6 @@ class ReservationsController extends AppController
         $user_id = $this->Auth->user('id');
         $schedule_id = $this->request->query['schedule_id'];
 
-        // 有効期限切れの予約情報を取得する処理
-        $current_time = new DateTime();
-        $allCancelled = $this->Reservations->find('all', [
-            'conditions' => array(
-                'expire_at <' => $current_time,
-                'is_cancelled' => false,
-            )
-        ]);
-        // 座席予約画面が呼び出された直後に、有効期限切れの予約情報のキャンセルフラグを「1」とする処理
-        foreach ($allCancelled as $cancelled) {
-            $cancelled->is_cancelled = true;
-            $this->Reservations->save($cancelled);
-        }
         // 座席予約画面が呼び出された直後に、座席予約をしようとしている上映回に紐づく予約情報をDBから取得
         $reservations = $this->Reservations->find()
             ->select('seat_number')
@@ -90,10 +96,8 @@ class ReservationsController extends AppController
         // 配列$reservedSeatsを初期化
         $reservedSeats = [];
         // 上映回に紐づく有効な予約情報が存在する場合は座席番号を取得し配列$reservedSeatsに代入
-        if ($reservations) {
-            foreach ($reservations as $eachReservation) {
-                $reservedSeats[] = $eachReservation['seat_number'];
-            }
+        foreach ($reservations as $eachReservation) {
+            $reservedSeats[] = $eachReservation['seat_number'];
         }
 
         $reservation = $this->Reservations->newEntity();
@@ -230,5 +234,28 @@ class ReservationsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function detail()
+    {
+        $current_time = date("Y/m/d H:i:s");
+        try {
+            $reservations = $this->Reservations->find()
+                // 有効かつアクセスした日以降の予約情報を取得
+                ->where([
+                    'user_id' => $this->Auth->user('id'),
+                    'is_confirmed' => true,
+                    'is_cancelled' => false,
+                    'is_deleted' => false,
+                    'end_at >' => $current_time
+                ])
+                ->contain(['schedules' => ['movies']])
+                // 上映開始時刻、座席番号の順番でソートする
+                ->order(['start_at' => 'asc', 'seat_number' => 'asc']);
+            $reservations = $reservations->toArray();
+        } catch (Exception $e) {
+            $reservations = null;
+        }
+        $this->set(compact('reservations'));
     }
 }

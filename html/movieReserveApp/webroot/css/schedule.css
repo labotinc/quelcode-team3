@@ -105,6 +105,14 @@ a.discount-day {
   color: #707070;
   width: 128px;
 }
+.not-on-sale {
+  line-height: 40px;
+  font-size: 15px;
+  height: 40px;
+  color: #707070;
+  width: 128px;
+  background-color: #D0CECE;
+}
 .schedule-reserve-button a:hover {
   background-color: #e1e1e1;
 }

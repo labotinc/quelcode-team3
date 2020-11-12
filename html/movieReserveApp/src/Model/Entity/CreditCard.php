@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -36,6 +37,5 @@ class CreditCard extends Entity
         'is_deleted' => true,
         'created' => true,
         'modified' => true,
-        'user' => true,
     ];
 }
