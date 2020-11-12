@@ -135,17 +135,16 @@ class ReservationsController extends AppController
 
     /**
      * Details method
-     * @param string|null $id Reservation id.
+     * @param null $id Reservation id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
 
     public function details()
     {
-        // if ($this->request->getData('cansel')) {
-        //     var_dump($this->request->query['id']);
-        //     return $this->redirect(['action' => '#add']);
-        // }
+        if (isset($this->request->getData['decision'])) {
+            var_dump(1);
+        }
         $reservation_id = $this->request->query['id'];
         $id = 1;
         $regular_price = $this->RegularPrices->get($id);
@@ -163,11 +162,27 @@ class ReservationsController extends AppController
         $movie_time = $movie_start . '~' . $movie_end;
         $movie = $this->Movies->get($schedule->movie_id);
         $this->set(compact('reservation_detail', 'regular_price', 'movie', 'schedule', 'movie_time'));
-        // if ($this->request->getData('decision')) {
-        //     return $this->redirect(['action' => '#', 'id' => $reservation_id]);
-        // }
+        if ($this->request->getData('decision')) {
+            var_dump(1);
+            return $this->redirect(['action' => '#', 'id' => $reservation_id]);
+        }
     }
+    /**
+     * Details method
+     * @param null .
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     */
 
+    public function cancel()
+    {
+        $schedule_id = $this->request->query['schedule_id'];
+        //前回選択した座席をキャンセルにする処理
+        $reservation_id = $this->request->query['reservation_id'];
+        $canceled_reservation = $this->Reservations->get($reservation_id);
+        $canceled_reservation['is_cancelled'] = true;
+        $this->Reservations->save($canceled_reservation);
+        return $this->redirect(['action' => 'add', 'schedule_id' => $schedule_id]);
+    }
 
     /**
      * Edit method
