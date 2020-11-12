@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Entity\CreditCard;
 use Cake\Event\Event;
 
 /**
@@ -20,6 +21,8 @@ class MypageController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->loadModel('CreditCards');
+
     }
 
     public function beforeFilter(Event $event)
@@ -28,10 +31,15 @@ class MypageController extends AppController
 
     public function index()
     {
-        $title = 'QUEL CINNEMAS';
-        $login = 'ログイン';
-
-        $this->set(compact('title', 'login'));
+        $user_id = $this->Auth->user('id');
+        $getCreditCard = $this->CreditCards->find('all')
+            ->where([
+                'user_id' => $user_id,
+                'is_deleted' => false
+            ]);
+        $cardInfo = $getCreditCard->first();
+        $hiddenCardNumber = substr($cardInfo['number'], 4, 4);
+        $this->set(compact('hiddenCardNumber', 'cardInfo'));
     }
 
 

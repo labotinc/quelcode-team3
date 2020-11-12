@@ -86,8 +86,8 @@ class CreditCardsController extends AppController
                     ]);
                 }
             }
-            $this->set(compact('creditCard'));
         }
+        $this->set(compact('creditCard'));
     }
 
     /**
