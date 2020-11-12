@@ -1,7 +1,7 @@
 'use strict';
 
 $(function () {
-  $('#openModal, .open-modal').click(function () {
+  $('.open-modal').click(function () {
     $('#modalArea').fadeIn();
   });
   $('#closeModal, #modalBg, .abort').click(function () {

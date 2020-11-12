@@ -28,7 +28,7 @@
                         </div>
                         <!-- キャンセルボタン -->
                         <div class="reservations-cancel" id="openModal">
-                            <p class="reservations-cancel-button open-modal">キャンセル</p>
+                            <p class="reservations-cancel-button open-modal" id="<?php echo $reservation->id; ?>">キャンセル</p>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -55,7 +55,8 @@
                     <div class="deletion-confirmed">
                         <?= $this->Html->link('削除', [
                             'controller' => 'Reservations',
-                            'action' => 'delete',
+                            'action' => 'cancel',
+                            '?' => ['id' => '']
                         ])
                         ?>
                     </div>
