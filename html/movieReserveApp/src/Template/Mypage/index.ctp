@@ -15,7 +15,7 @@
         <th>決済情報</th>
         <!-- TODO: 後でactionを適切なものに置き換える -->
         <?php if ($hiddenCardNumber) : ?>
-          <td  class="mypage-top-link-button"><span>************<?= $hiddenCardNumber; ?></span><?= $this->Html->link('変更', ['controller' => 'CreditCards', 'action' => 'modify', '_full' => true]) ?></td>
+          <td class="mypage-top-link-button"><span>************<?= $hiddenCardNumber; ?></span><?= $this->Html->link('変更', ['controller' => 'CreditCards', 'action' => 'modify', '_full' => true]) ?></td>
         <?php else : ?>
           <td class="mypage-top-link-button"><?= $this->Html->link('登録する', ['controller' => 'CreditCards', 'action' => 'add', '_full' => true]) ?></td>
         <?php endif; ?>

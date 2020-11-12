@@ -129,7 +129,7 @@
   text-align: center;
   color: #707070;
 }
-.reservations-cancel-button a {
+.reservations-cancel-button {
   position: absolute;
   top: 48px;
   right: 24px;
@@ -137,6 +137,7 @@
   color: #AFAFAF;
   padding: 10px 18px;
   border: 1.5px solid #AFAFAF;
+  cursor: pointer;
 }
 .reservations-cancel-button a:hover {
   background-color: #fff;

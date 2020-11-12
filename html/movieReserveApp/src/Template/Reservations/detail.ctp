@@ -27,8 +27,8 @@
                             </div>
                         </div>
                         <!-- キャンセルボタン -->
-                        <div class="reservations-cancel">
-                            <p class="reservations-cancel-button"><?= $this->Html->link('キャンセル', ['controller' => 'Reservations', 'action' => 'cancel', '_full' => true]) ?></p>
+                        <div class="reservations-cancel" id="openModal">
+                            <p class="reservations-cancel-button open-modal">キャンセル</p>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -44,6 +44,29 @@
             ?>
         </div>
     </div>
+    <!-- モーダルエリアここから -->
+    <section id="modalArea" class="modalArea">
+        <div id="modalBg" class="modalBg"></div>
+        <div class="modalWrapper">
+            <div class="modalContents">
+                <p class="modal-message">本当にこの予約をキャンセルしますか？</p>
+                <div class="modal-inner-wrapper">
+                    <p class="abort">戻る</p>
+                    <div class="deletion-confirmed">
+                        <?= $this->Html->link('削除', [
+                            'controller' => 'Reservations',
+                            'action' => 'delete',
+                        ])
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div id="closeModal" class="closeModal">
+                ×
+            </div>
+        </div>
+    </section>
+    <!-- モーダルエリアここまで -->
 </main>
 
 <!-- 曜日を取得する関数 -->
