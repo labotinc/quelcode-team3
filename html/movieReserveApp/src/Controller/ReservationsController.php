@@ -19,6 +19,17 @@ class ReservationsController extends AppController
     public function initialize()
     {
         parent::initialize();
+
+
+
+
+
+
+
+
+
+
+
         $this->loadModel('Movies');
         $this->loadModel('RegularPrices');
         $this->loadModel('Schedules');
