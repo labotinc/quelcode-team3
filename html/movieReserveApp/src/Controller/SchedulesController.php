@@ -60,9 +60,9 @@ class SchedulesController extends AppController
             });
         });
 
-        $this->set(compact('dates'));
-        $this->set(compact('movies'));
-        $this->set(compact('page'));
+        $current_time = new DateTime();
+
+        $this->set(compact('dates', 'movies', 'page', 'current_time'));
     }
 
     /**

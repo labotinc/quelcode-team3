@@ -1,0 +1,115 @@
+body {
+    background-color: #ebebeb;
+}
+li {
+    list-style: none;
+}
+/* 決済情報登録画面 */
+.card-registration-main {
+    margin-bottom: 160px;
+}
+.creditcard-registration-main > h1 {
+    letter-spacing: 0.89px;
+    font-size: 25px;
+    color: #707070;
+    margin-bottom: 36px;
+    text-align: center;
+}
+.creditcard-registration-wrapper {
+    margin: 0 auto;
+    padding-top: 118px;
+    padding-bottom: 88px;
+    background-color: #fff;
+    width: 736px;
+}
+.creditcard-registration-form {
+    width: 336px;
+    margin: 0 auto;
+}
+.creditcard-registration-fieldset {
+    border: none;
+}
+.creditcard-registration-fieldset input {
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+.card-number {
+    margin-bottom: 44px;
+}
+.card-holder {
+    margin-bottom: 36px;
+}
+.card-number {
+    display: flex;
+    position: relative;
+}
+#number {
+    width: 270px;
+}
+.card-icons {
+    position: absolute;
+    top: 10px;
+    left: 270px;
+}
+.fab {
+    font-size: 26px;
+    opacity: .3;
+}
+.creditcard-registration-fieldset input::placeholder {
+    opacity: 0.3;
+}
+.creditcard-registration-fieldset-medium {
+    border: none;
+    display: flex;
+    margin-bottom: 61px;
+}
+.creditcard-registration-fieldset .expire-on {
+    width: 80%;
+}
+.creditcard-registration-fieldset .security-code {
+    width: 110%;
+}
+.creditcard-registration-fieldset .error input {
+    margin-bottom: 8px;
+}
+.privacy-policy .form-error {
+    float: left;
+}
+label {
+    font-size: 10.5px;
+}
+.creditcard-registration-fieldset-medium .error:last-child {
+    margin-left: 29px;
+}
+#privacy-policy {
+    width: 20px;
+    margin-bottom: 0;
+}
+.creditcard-registration-fieldset-below {
+    border: none;
+    float: left;
+    margin-bottom: 48px;
+}
+.card-number .error,
+.card-holder .error,
+.creditcard-registration-fieldset-medium .error,
+.creditcard-registration-fieldset-below .error {
+    margin-bottom: -19px;
+}
+.creditcard-registration-fieldset .error-message {
+    color: #f46161;
+}
+.creditcard-registration-submission-btn {
+    border: 3px solid #f5ae0b;
+    box-shadow: 0px 2px 2px #00000015;
+    background-color: #f5ae0b;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 16px 135px;
+    opacity: 1;
+    margin-bottom: 0;
+    width: 100%;
+}
+/* 決済情報登録画面おわり */
