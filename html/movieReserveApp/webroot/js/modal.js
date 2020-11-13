@@ -1,7 +1,7 @@
 'use strict';
 
 $(function () {
-  $('.open-modal').click(function () {
+  $('.reservations-cancel-button').click(function () {
     $('#modalArea').fadeIn();
   });
   $('#closeModal, #modalBg, .abort').click(function () {
