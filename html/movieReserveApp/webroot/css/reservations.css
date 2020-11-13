@@ -139,7 +139,7 @@
   border: 1.5px solid #AFAFAF;
   cursor: pointer;
 }
-.reservations-cancel-button a:hover {
+.reservations-cancel-button:hover {
   background-color: #fff;
 }
 .reservations-to-mypage-button a {
