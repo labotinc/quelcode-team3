@@ -20,29 +20,9 @@ class ReservationsController extends AppController
     public function initialize()
     {
         parent::initialize();
-
-
-
-
-
-
-
-
-
-
-
         $this->loadModel('Movies');
         $this->loadModel('RegularPrices');
         $this->loadModel('Schedules');
-    }
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
-    public function initialize()
-    {
-        parent::initialize();
         // 有効期限切れの予約情報を取得する処理
         $current_time = new DateTime();
         $allCancelled = $this->Reservations->find('all', [
@@ -59,6 +39,11 @@ class ReservationsController extends AppController
         }
     }
 
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
     public function index()
     {
         $this->paginate = [
