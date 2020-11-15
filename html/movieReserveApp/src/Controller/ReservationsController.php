@@ -142,18 +142,13 @@ class ReservationsController extends AppController
 
     public function details()
     {
-        if (isset($this->request->getData['decision'])) {
-            var_dump(1);
-        }
         $reservation_id = $this->request->query['id'];
         $id = 1;
         $regular_price = $this->RegularPrices->get($id);
         $reservation_detail = $this->Reservations->get($reservation_id);
         $schedule = $this->Schedules->get($reservation_detail->schedule_id);
+        //映画開始日時と曜日を取得し整形
         $week = array("日", "月", "火", "水", "木", "金", "土");
-        // var_dump($schedule->start_at->format('Y-m-d H:i:s'));
-        // var_dump($week[date("w", strtotime($schedule->start_at->format('Y-m-d H:i:s')))]);
-        // var_dump($schedule->start_at->format('m月d日 H:i'));
         $movie_start_date = $schedule->start_at->format('m月d日');
         $movie_start_week = $week[date("w", strtotime($schedule->start_at->format('Y-m-d H:i:s')))];
         $movie_start_time = $schedule->start_at->format('H:i');
@@ -162,10 +157,7 @@ class ReservationsController extends AppController
         $movie_time = $movie_start . '~' . $movie_end;
         $movie = $this->Movies->get($schedule->movie_id);
         $this->set(compact('reservation_detail', 'regular_price', 'movie', 'schedule', 'movie_time'));
-        if ($this->request->getData('decision')) {
-            var_dump(1);
-            return $this->redirect(['action' => '#', 'id' => $reservation_id]);
-        }
+        //決定ボタンを押下後は予約
     }
     /**
      * Details method
