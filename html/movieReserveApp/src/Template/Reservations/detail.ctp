@@ -52,14 +52,17 @@
                 <p class="modal-message">本当にこの予約をキャンセルしますか？</p>
                 <div class="modal-inner-wrapper">
                     <p class="abort">戻る</p>
-                    <div class="deletion-confirmed">
-                        <?= $this->Html->link('削除', [
-                            'controller' => 'Reservations',
+                    <?= $this->Form->create($reservation, [
+                        'type' => 'post', 
+                        'url' => [
                             'action' => 'cancel',
-                            '?' => ['id' => '']
-                        ])
-                        ?>
+                        ],
+                    ]); ?>
+                    <div class="deletion-confirmed">
+                        <?= $this->Form->hidden('reservation_id', ['id'=>'reservation_id']) ?>
+                        <?= $this->Form->button(__('削除')) ?>
                     </div>
+                    <?= $this->Form->end() ?>
                 </div>
             </div>
             <div id="closeModal" class="closeModal">
