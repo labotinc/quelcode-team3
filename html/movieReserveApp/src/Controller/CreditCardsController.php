@@ -66,7 +66,7 @@ class CreditCardsController extends AppController
             //FormクラスのエラーとModelのバリデーションエラーがない場合
             if ($creditcard_form->validate($this->request->getData()) && empty($creditCard->getErrors())) {
                 if ($this->CreditCards->save($creditCard)) {
-                    return $this->redirect(['controller' => 'Mypage', 'action' => 'index']);
+                    return $this->redirect(['action' => 'registered']);
                 } else {
                     $this->Flash->error(__('クレジットカードの登録に失敗しました.'));
                 }
@@ -90,6 +90,10 @@ class CreditCardsController extends AppController
         $this->set(compact('creditCard'));
     }
 
+    public function registered() 
+    {
+
+    }
     /**
      * Edit method
      *
