@@ -6,6 +6,7 @@ use App\Controller\AppController;
 use Cake\I18n\Date;
 use DateTime;
 use Exception;
+use Seld\PharUtils\Timestamps;
 
 /**
  * Reservations Controller
@@ -16,14 +17,12 @@ use Exception;
  */
 class ReservationsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
     public function initialize()
     {
         parent::initialize();
+        $this->loadModel('Movies');
+        $this->loadModel('RegularPrices');
+        $this->loadModel('Schedules');
         // 有効期限切れの予約情報を取得する処理
         $current_time = new DateTime();
         $allCancelled = $this->Reservations->find('all', [
@@ -40,6 +39,11 @@ class ReservationsController extends AppController
         }
     }
 
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null
+     */
     public function index()
     {
         $this->paginate = [
@@ -127,6 +131,49 @@ class ReservationsController extends AppController
             'rows',
             'reservedSeats',
         ));
+    }
+
+    /**
+     * Details method
+     * @param null $id Reservation id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+
+    public function details()
+    {
+        $reservation_id = $this->request->query['id'];
+        $id = 1;
+        $regular_price = $this->RegularPrices->get($id);
+        $reservation_detail = $this->Reservations->get($reservation_id);
+        $schedule = $this->Schedules->get($reservation_detail->schedule_id);
+        //映画開始日時と曜日を取得し整形
+        $week = array("日", "月", "火", "水", "木", "金", "土");
+        $movie_start_date = $schedule->start_at->format('m月d日');
+        $movie_start_week = $week[date("w", strtotime($schedule->start_at->format('Y-m-d H:i:s')))];
+        $movie_start_time = $schedule->start_at->format('H:i');
+        $movie_start = $movie_start_date . '(' . $movie_start_week . ')' . $movie_start_time;
+        $movie_end = $schedule->end_at->format('H:i');
+        $movie_time = $movie_start . '~' . $movie_end;
+        $movie = $this->Movies->get($schedule->movie_id);
+        $this->set(compact('reservation_detail', 'regular_price', 'movie', 'schedule', 'movie_time'));
+        //決定ボタンを押下後は予約
+    }
+    /**
+     * Details method
+     * @param null .
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     */
+
+    public function cancel()
+    {
+        $schedule_id = $this->request->query['schedule_id'];
+        //前回選択した座席をキャンセルにする処理
+        $reservation_id = $this->request->query['reservation_id'];
+        $canceled_reservation = $this->Reservations->get($reservation_id);
+        $canceled_reservation['is_cancelled'] = true;
+        $this->Reservations->save($canceled_reservation);
+        return $this->redirect(['action' => 'add', 'schedule_id' => $schedule_id]);
     }
 
     /**
