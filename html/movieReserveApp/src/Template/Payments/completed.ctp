@@ -4,6 +4,7 @@
     <?= $this->Html->link(
       __('戻る'),
       [
+        '_full' => true,
         'controller' => 'schedules',
         'action' => 'index'
       ],

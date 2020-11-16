@@ -15,6 +15,7 @@
       <?= $this->Html->link(
         __('キャンセル'),
         [
+          '_full' => true,
           'action' => 'methodselect',
           $reservation_id,
           '?' => ['regular_price_id' => $regular_price->id]

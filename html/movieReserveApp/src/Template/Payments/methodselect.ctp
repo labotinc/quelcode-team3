@@ -18,6 +18,7 @@
         <?= $this->Html->link(
           __('キャンセル'),
           [
+            '_full' => true,
             'controller' => 'reservations',
             'action' => 'details',
             '?' => ['id' => 'reservation_id']
