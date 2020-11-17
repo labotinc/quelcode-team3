@@ -8,6 +8,7 @@ $(function () {
   });
   $('#closeModal, #modalBg, .abort').click(function () {
     $('#modalArea').fadeOut();
+    document.getElementById('reservation_id').setAttribute('value', '');
   });
   
 });
