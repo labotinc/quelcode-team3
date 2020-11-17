@@ -167,6 +167,9 @@ class ReservationsController extends AppController
 
     public function cancel()
     {
+        if ($this->request->is('post')) {
+
+        }
         $schedule_id = $this->request->query['schedule_id'];
         //前回選択した座席をキャンセルにする処理
         $reservation_id = $this->request->query['reservation_id'];
