@@ -3,8 +3,8 @@
 $(function() {
   // 座席番号のデータを保持する処理
   function setSeatNumber() {
-    var selected = document.getElementsByClassName('selected');
-    var selected_seat = selected[0].id;
+    const selected = document.getElementsByClassName('selected');
+    const selected_seat = selected[0].id;
 
     document.getElementById('seat-number').setAttribute('value', selected_seat);
   }

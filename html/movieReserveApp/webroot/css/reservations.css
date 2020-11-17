@@ -1,133 +1,133 @@
 .seat-reservation {
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 39px;
-  color: #707070;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 39px;
+    color: #707070;
 }
 .seats-outer-wrapper {
-  background-color: #fff;
-  padding: 84px 120px 80px 120px;
-  width: 736px;
-  margin: 0 auto 33px auto;
+    background-color: #fff;
+    padding: 84px 120px 80px 120px;
+    width: 736px;
+    margin: 0 auto 33px auto;
 }
 .seats-inner-wrapper {
-  padding: 0 9px;
-  display: flex;
-  margin-bottom: 56px;
+    padding: 0 9px;
+    display: flex;
+    margin-bottom: 56px;
 }
 .seats-columns {
-  text-align: center;
-  margin-right: 16px;
+    text-align: center;
+    margin-right: 16px;
 }
 .seats-columns:last-child {
-  margin-right: 20px;
+    margin-right: 20px;
 }
 .seats-columns li {
-  margin-bottom: 16px;
-  font-size: 13px;
-  color: #99918C;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #99918c;
 }
 .seats-columns li:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 .seats-rows {
-  padding-top: 39px;
+    padding-top: 39px;
 }
 .seats-rows li {
-  font-size: 13px;
-  margin-bottom: 22px;
-  line-height: 18px;
-  color: #99918C;
+    font-size: 13px;
+    margin-bottom: 22px;
+    line-height: 18px;
+    color: #99918c;
 }
 .seats-rows li:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 .rows-left {
-  margin-right: 19px;
+    margin-right: 19px;
 }
 .unavailable {
-  height: 24px;
-  width: 24px;
-  background-color: #fff;
-  border: 1px dotted #C9C9C9;
-  border-radius: 3px;
+    height: 24px;
+    width: 24px;
+    background-color: #fff;
+    border: 1px dotted #c9c9c9;
+    border-radius: 3px;
 }
 .available {
-  height: 24px;
-  width: 24px;
-  background-color: #C9C9C9;
-  border-radius: 3px;
-  cursor: pointer;
+    height: 24px;
+    width: 24px;
+    background-color: #c9c9c9;
+    border-radius: 3px;
+    cursor: pointer;
 }
 .selected {
-  height: 24px;
-  width: 24px;
-  background-color: #464444;
-  border-radius: 3px;
-  cursor: pointer;
+    height: 24px;
+    width: 24px;
+    background-color: #464444;
+    border-radius: 3px;
+    cursor: pointer;
 }
 .submit {
-  text-align: center;
+    text-align: center;
 }
 .seats-reservation-btn {
-  display: inline-block;
-  padding: 16px 152px;
-  background-color: #F5AE0B;
-  color: #fff;
-  letter-spacing: .44px;
+    display: inline-block;
+    padding: 16px 152px;
+    background-color: #f5ae0b;
+    color: #fff;
+    letter-spacing: 0.44px;
 }
 /* ここまで座席予約画面 */
 
 /* ここからマイページ予約詳細画面 */
 .my-reservations-outer {
-  padding: 120px 104px 88px 104px;
-  margin: 0 auto;
-  box-shadow: 0px 0px 6px #00000029;
-  background-color: #FFF;
-  max-width: 736px;
+    padding: 120px 104px 88px 104px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 6px #00000029;
+    background-color: #fff;
+    max-width: 736px;
 }
 .my-reservations-inner {
-  margin-bottom: 64px;
+    margin-bottom: 64px;
 }
 .no-reservations {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 .reservations-descriptions {
-  display: flex;
-  align-items: center;
-  background: #F2F2F2;
-  margin: 0 auto 32px;
-  position: relative;
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+    margin: 0 auto 32px;
+    position: relative;
 }
 .reservations-more-details {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 .reservations-poster {
-  margin-right: 24px;
-  width: 107px;
+    margin-right: 24px;
+    width: 107px;
 }
 .reservations-title {
-  font-size: 20px;
-  margin-bottom: 4px;
+    font-size: 20px;
+    margin-bottom: 4px;
 }
 .reservations-date {
-  font-size: 16px;
-  margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 8px;
 }
 .reservations-price {
-  font-size: 18px;
-  font-weight: 600;
+    font-size: 18px;
+    font-weight: 600;
 }
 .reservations-space {
-  margin-right: 12px;
+    margin-right: 12px;
 }
 .reservations-details {
-  text-align: initial;
+    text-align: initial;
 }
 .reservations-top-container {
-  text-align: center;
-  color: #707070;
+    text-align: center;
+    color: #707070;
 }
 .reservations-cancel-button {
   position: absolute;
@@ -143,14 +143,73 @@
   background-color: #fff;
 }
 .reservations-to-mypage-button a {
-  background-color: #F5AE0B;
-  display: inline-block;
-  padding: 16px 104px;
-  box-shadow: 0px 2px 2px #00000014;
-  font-size: 15px;
-  color: #FFF;
-  letter-spacing: 0.44px;
+    background-color: #f5ae0b;
+    display: inline-block;
+    padding: 16px 104px;
+    box-shadow: 0px 2px 2px #00000014;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.44px;
 }
-.reservations-to-mypage-button a:hover{
-  box-shadow: 0px 2px 6px #00000056;
+.reservations-to-mypage-button a:hover {
+    box-shadow: 0px 2px 6px #00000056;
 }
+
+/*予約確認画面*/
+.reservation-detail {
+    padding-bottom: 247px;
+}
+.reservation-detail-wrapper {
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 104px;
+    padding-bottom: 80px;
+    background-color: #fff;
+    width: 736px;
+    text-align: center;
+}
+.reservation-detail-list li {
+    color: #707070;
+    margin-bottom: 22px;
+}
+.reservation-detail-list {
+    margin-bottom: 69px;
+}
+.cancel {
+    display: inline-block;
+    background-color: #efefef;
+    letter-spacing: 0.44px;
+    font-size: 16px;
+    margin-right: 16px;
+}
+.cancel :hover {
+    box-shadow: 0px 2px 6px #00000056;
+}
+.cancel a {
+    padding: 16px 23px;
+    display: block;
+    color: #707070;
+}
+.cancel a:visited {
+    color: #707070;
+}
+.confirm {
+    display: inline-block;
+    background-color: #f5ae0b;
+    letter-spacing: 0.44px;
+    box-shadow: 0px 2px 2px #00000014;
+    font-size: 16px;
+}
+.confirm :hover {
+    box-shadow: 0px 2px 6px #00000056;
+}
+.confirm a {
+    display: block;
+    padding: 16px 80px;
+    color: #fff;
+}
+.confirm a:visited {
+    color: #fff;
+}
+/*予約確認画面終了*/
