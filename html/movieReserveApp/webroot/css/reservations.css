@@ -151,6 +151,9 @@
     color: #fff;
     letter-spacing: 0.44px;
 }
+.cancelled-to-mypage a {
+    width: 336px;
+}
 .reservations-to-mypage-button a:hover {
     box-shadow: 0px 2px 6px #00000056;
 }
@@ -213,3 +216,14 @@
     color: #fff;
 }
 /*予約確認画面終了*/
+
+/* ここから予約キャンセル完了画面 */
+.cancelled-main {
+    padding-top: 144px;
+    margin-bottom: 329px;
+    text-align: center;
+}
+.cancelled-message {
+    color: #707070;
+    margin-bottom: 40px;
+}

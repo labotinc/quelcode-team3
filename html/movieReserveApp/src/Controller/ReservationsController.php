@@ -168,7 +168,16 @@ class ReservationsController extends AppController
     public function cancel()
     {
         if ($this->request->is('post')) {
+            $reservation_id = $this->request->getData(['reservation_id']);
+            $cancelled_reservation = $this->Reservations->get($reservation_id);
 
+            $cancelled_reservation->is_cancelled = true;
+            if ($this->Reservations->save($cancelled_reservation)) {
+                return $this->redirect(['action' => 'cancelled']);
+            } else {
+                $this->Flash->error('処理が正常に完了しませんでした。');
+                return $this->redirect(['action' => 'detail']);
+            }
         }
         $schedule_id = $this->request->query['schedule_id'];
         //前回選択した座席をキャンセルにする処理
@@ -179,6 +188,9 @@ class ReservationsController extends AppController
         return $this->redirect(['action' => 'add', 'schedule_id' => $schedule_id]);
     }
 
+    public function cancelled() 
+    {
+    }
     /**
      * Edit method
      *
