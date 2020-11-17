@@ -23,6 +23,7 @@ class PaymentsController extends AppController
 
     public function methodselect($reservation_id = null)
     {
+        // 正規料金idをクエリパラメータで、予約idを引数で受け取る。セットされていない場合トップページに戻る
         $regular_price_id = $this->request->getQuery('regular_price_id');
         if (!isset($reservation_id) || !isset($regular_price_id)) {
             return $this->redirect([
@@ -31,6 +32,7 @@ class PaymentsController extends AppController
             ]);
         }
 
+        // 存在する予約IDか調べる
         try {
             $reservation = $this->Reservations->get($reservation_id);
         } catch (Exception $e) {
@@ -40,10 +42,12 @@ class PaymentsController extends AppController
                 'action' => 'index'
             ]);
         }
+
         $user_id = $this->Auth->user()['id'];
         $creditcard = $this->CreditCards->find('all', [
             'conditions' => ['user_id' => $user_id]
         ])->first();
+
         $this->set(compact('regular_price_id', 'reservation_id', 'creditcard'));
 
         if($this->request->is('post')){
@@ -57,6 +61,7 @@ class PaymentsController extends AppController
 
     public function confirm($reservation_id = null)
     {
+        // 正規料金idをクエリパラメータで、予約idを引数で受け取る。セットされていない場合トップページに戻る
         $regular_price_id = $this->request->getQuery('regular_price_id');
         if (!isset($reservation_id) || !isset($regular_price_id)) {
             return $this->redirect([
@@ -91,6 +96,7 @@ class PaymentsController extends AppController
             return;
         }
 
+        // 予約情報更新処理
         $reservation->regular_price_id = $regular_price_id;
         $reservation->purchased_price = $regular_price->price;
         $reservation->is_confirmed = 1;

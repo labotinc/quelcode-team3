@@ -19,6 +19,7 @@ img {
   align-items: center;
 }
 main {
+  min-height: calc(100vh - 255px);
   background-color: #EBEBEB;
   padding-top: 80px;
   padding-bottom: 206px;

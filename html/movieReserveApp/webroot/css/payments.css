@@ -23,6 +23,18 @@
 .payment-form p{
   font-size: 13px;
   color: #707070;
+  margin-bottom: 16px;
+}
+
+.payment-creditcard-add-button{
+  text-align: center;
+  background-color: #F5AE0B;
+  width: 240px;
+  display: block;
+  padding: 8px 16px;
+  box-shadow: 0px 2px 2px #00000014;
+  font-size: 15px;
+  color: #FFF;
 }
 
 .payment-creditcard-container{
@@ -101,6 +113,10 @@ p.payment-creditcard-detail{
   display: block;
   width: 192px;
   height: 48px;
+}
+
+.payment-form-submit-button:disabled{
+  opacity: 0;
 }
 
 /* 共通部分、決済方法ページ */
