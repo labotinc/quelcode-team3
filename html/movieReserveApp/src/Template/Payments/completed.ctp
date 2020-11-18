@@ -5,7 +5,7 @@
       __('戻る'),
       [
         '_full' => true,
-        'controller' => 'schedules',
+        'controller' => 'index',
         'action' => 'index'
       ],
       [

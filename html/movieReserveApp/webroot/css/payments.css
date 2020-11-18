@@ -2,6 +2,7 @@
 
 .payment-main{
   text-align: center;
+  margin-bottom: 170px;
 }
 
 .payment-title{
@@ -32,9 +33,12 @@
   width: 240px;
   display: block;
   padding: 8px 16px;
-  box-shadow: 0px 2px 2px #00000014;
   font-size: 15px;
   color: #FFF;
+}
+
+.payment-creditcard-add-button:hover{
+  box-shadow: 0px 2px 2px #00000014;
 }
 
 .payment-creditcard-container{
@@ -98,7 +102,6 @@ p.payment-creditcard-detail{
   color: #707070;
   font-size: 16px;
   background-color: #EFEFEF;
-  box-shadow: 0px 2px 2px #00000014;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,13 +109,20 @@ p.payment-creditcard-detail{
   height: 48px;
 }
 
+.payment-form-cancel-button:hover{
+  box-shadow: 0px 2px 2px #00000014;
+}
+
 .payment-form-submit-button{
   color: #FFF;
   background-color: #F5AE0B;
-  box-shadow: 0px 2px 2px #00000014;
   display: block;
   width: 192px;
   height: 48px;
+}
+
+.payment-form-submit-button:hover{
+  box-shadow: 0px 2px 2px #00000014;
 }
 
 .payment-form-submit-button:disabled{
