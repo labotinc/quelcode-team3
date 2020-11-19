@@ -21,6 +21,36 @@ class PaymentsController extends AppController
         $this->loadModel('Reservations');
     }
 
+    private function getValidReservation($reservation_id)
+    {
+        try {
+            $reservation = $this->Reservations->get($reservation_id);
+        } catch (Exception $e) {
+            return null;
+        }
+
+        if ($reservation->is_confirmed || $reservation->is_canceled || $reservation->is_deleted) {
+            return null;
+        } else {
+            return $reservation;
+        }
+    }
+
+    private function getValidRegularPrice($regular_price_id)
+    {
+        try {
+            $regular_price = $this->RegularPrices->get($regular_price_id);
+        } catch (Exception $e) {
+            return null;
+        }
+
+        if ($regular_price->is_invalid) {
+            return null;
+        } else {
+            return $regular_price;
+        }
+    }
+
     public function methodselect($reservation_id = null)
     {
         // 正規料金idをクエリパラメータで、予約idを引数で受け取る。セットされていない場合トップページに戻る
@@ -33,10 +63,9 @@ class PaymentsController extends AppController
         }
 
         // 存在する予約IDか調べる
-        try {
-            $reservation = $this->Reservations->get($reservation_id);
-        } catch (Exception $e) {
-            $this->Flash->error('無効な予約IDです');
+        $reservation = $this->getValidReservation($reservation_id);
+        if (!isset($reservation)) {
+            $this->Flash->error('お支払済みか、有効でない予約IDです');
             return $this->redirect([
                 'controller' => 'Schedules',
                 'action' => 'index'
@@ -50,7 +79,7 @@ class PaymentsController extends AppController
 
         $this->set(compact('regular_price_id', 'reservation_id', 'creditcard'));
 
-        if($this->request->is('post')){
+        if ($this->request->is('post')) {
             return $this->redirect([
                 'action' => 'confirm',
                 $reservation_id,
@@ -70,20 +99,20 @@ class PaymentsController extends AppController
             ]);
         }
 
-        try {
-            $reservation = $this->Reservations->get($reservation_id);
-        } catch (Exception $e) {
-            $this->Flash->error('無効な予約IDです');
+        // 存在する予約IDか調べる
+        $reservation = $this->getValidReservation($reservation_id);
+        if (!isset($reservation)) {
+            $this->Flash->error('お支払済みか、有効でない予約IDです');
             return $this->redirect([
                 'controller' => 'Schedules',
                 'action' => 'index'
             ]);
         }
 
-        try {
-            $regular_price = $this->RegularPrices->get($regular_price_id);
-        } catch (Exception $e) {
-            $this->Flash->error('無効な料金です');
+        // 存在する料金か調べる
+        $regular_price = $this->getValidRegularPrice($regular_price_id);
+        if (!isset($regular_price)) {
+            $this->Flash->error('料金IDが無効です');
             return $this->redirect([
                 'controller' => 'Schedules',
                 'action' => 'index'
