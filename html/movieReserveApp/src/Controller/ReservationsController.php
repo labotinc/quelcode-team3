@@ -167,6 +167,7 @@ class ReservationsController extends AppController
 
     public function cancel()
     {
+        // マイページから予約をキャンセルする際の処理
         if ($this->request->is('post')) {
             $reservation_id = $this->request->getData(['reservation_id']);
             $cancelled_reservation = $this->Reservations->get($reservation_id);
