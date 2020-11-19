@@ -80,7 +80,19 @@ class ReservationsController extends AppController
         // 仮予約作成の際必要となるユーザIDとスケジュールIDを取得
         $user_id = $this->Auth->user('id');
         $schedule_id = $this->request->query['schedule_id'];
-
+        //座席予約ページに遷移時、仮予約をキャンセル
+        $cancelSeats = $this->Reservations->find()
+            ->where([
+                'user_id' => $user_id,
+                'schedule_id' => $schedule_id,
+                'is_cancelled' => false,
+                'is_deleted' => false,
+                'is_confirmed' => false
+            ]);
+        foreach ($cancelSeats as $cancelSeat) {
+            $cancelSeat->is_cancelled = true;
+            $this->Reservations->save($cancelSeat);
+        };
         // 座席予約画面が呼び出された直後に、座席予約をしようとしている上映回に紐づく予約情報をDBから取得
         $reservations = $this->Reservations->find()
             ->select('seat_number')
@@ -95,11 +107,10 @@ class ReservationsController extends AppController
         foreach ($reservations as $eachReservation) {
             $reservedSeats[] = $eachReservation['seat_number'];
         }
-
         $reservation = $this->Reservations->newEntity();
         if ($this->request->is('post')) {
             $reservation = $this->Reservations->patchEntity($reservation, $this->request->getData());
-            $reservation->expire_at = new DateTime('+1 hours');
+            $reservation->expire_at = new DateTime('+15 minute');
             // 座席選択中に他ユーザによって座席が予約された場合は以降の処理に移らない（同一上映回で同じ座席への重複が発生するのを防ぐ）
             if (in_array($reservation->seat_number, $reservedSeats)) {
                 // 「決定ボタン」押下前に他ユーザによって選択中の座席予約がされた場合のメッセージ
