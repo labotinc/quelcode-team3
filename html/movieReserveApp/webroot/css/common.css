@@ -19,6 +19,7 @@ img {
   align-items: center;
 }
 main {
+  min-height: calc(100vh - 255px);
   background-color: #EBEBEB;
   padding-top: 80px;
   padding-bottom: 206px;
@@ -35,7 +36,7 @@ main {
 }
 h1, h3, .main-nav, .bottom-nav {
   font-size: 16px;
-  letter-spacing: 1.28px 
+  letter-spacing: 1.28px
 }
 .main-nav {
   display: flex;
@@ -87,6 +88,6 @@ h1, h3, .main-nav, .bottom-nav {
   padding: 1px 32px;
 }
 .bottom-nav li:last-child {
-  border-right: none; 
+  border-right: none;
 }
 

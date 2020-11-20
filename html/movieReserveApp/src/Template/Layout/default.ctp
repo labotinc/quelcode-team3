@@ -18,6 +18,7 @@
     echo $this->Html->css('creditcard-registration.css');
     echo $this->Html->css('reservations.css');
     echo $this->Html->css('modal.css');
+    echo $this->Html->css('payments.css');
     ?>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>

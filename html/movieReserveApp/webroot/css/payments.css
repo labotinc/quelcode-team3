@@ -1,0 +1,181 @@
+/* 共通部分、決済方法ページ */
+
+.payment-main{
+  text-align: center;
+  margin-bottom: 170px;
+}
+
+.payment-title{
+  border: none;
+  color: #707070;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.payment-container{
+  text-align: left;
+  padding: 56px 184px;
+  width: 736px;
+  margin: 0 auto;
+  background-color: #FFF;
+  box-shadow: 0px 0px 6px #00000029;
+}
+
+.payment-form p{
+  font-size: 13px;
+  color: #707070;
+  margin-bottom: 16px;
+}
+
+.payment-creditcard-add-button{
+  text-align: center;
+  background-color: #F5AE0B;
+  width: 240px;
+  display: block;
+  padding: 8px 16px;
+  font-size: 15px;
+  color: #FFF;
+}
+
+.payment-creditcard-add-button:hover{
+  box-shadow: 0px 2px 2px #00000014;
+}
+
+.payment-creditcard-container{
+  padding: 20px 28px;
+  border: 0.5px solid #ADADAD;
+  border-radius: 5px;
+}
+
+.payment-form input[type="radio"]{
+  display: none;
+}
+
+.payment-form label{
+  display: flex;
+  align-items: center;
+}
+
+.outer {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin-right: 28px;
+  float: left;
+  border: 1px solid #F5AE0B;
+  border-radius: 50%;
+}
+
+.inner {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 3px;
+  border-radius: 50%;
+  background-color: #F5AE0B;
+  opacity: 0;
+}
+
+.payment-form input[type="radio"]:checked+label>span>span{
+  opacity: 1;
+}
+
+p.payment-creditcard-name{
+  font-weight: bold;
+  font-size: 18px;
+  color: #707070;
+  letter-spacing: 0.3px;
+}
+
+p.payment-creditcard-detail{
+  font-size: 14px;
+  letter-spacing: 0.23px;
+}
+
+.payment-form-button-container{
+  margin-top: 72px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.payment-form-cancel-button{
+  color: #707070;
+  font-size: 16px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 48px;
+}
+
+.payment-form-cancel-button:hover{
+  box-shadow: 0px 2px 2px #00000014;
+}
+
+.payment-form-submit-button{
+  color: #FFF;
+  background-color: #F5AE0B;
+  display: block;
+  width: 192px;
+  height: 48px;
+}
+
+.payment-form-submit-button:hover{
+  box-shadow: 0px 2px 2px #00000014;
+}
+
+.payment-form-submit-button:disabled{
+  opacity: 0;
+}
+
+/* 共通部分、決済方法ページ */
+
+/* 決済概要ページ */
+
+.payment-details-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-details-name{
+  color: #707070;
+  font-size: 13px;
+}
+
+.payment-details-price{
+  color: #707070;
+  font-size: 18px;
+}
+
+.payment-divider{
+  margin: 10px 0;
+  border-top: 1px solid #AEAEAE;
+}
+
+/* 決済概要ページ */
+
+/* 決済完了ページ */
+
+.payment-container.completed{
+  text-align: center;
+}
+
+p.payment-completed-message{
+  color: #707070;
+  font-size: 16px;
+}
+
+.payment-completed-button{
+  color: #FFF;
+  margin: 40px auto 0 auto;
+  background-color: #F5AE0B;
+  box-shadow: 0px 3px 6px #00000036;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 336px;
+  height: 48px;
+}
+/* 決済完了ページ */
