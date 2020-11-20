@@ -167,16 +167,24 @@ class ReservationsController extends AppController
 
     public function cancel()
     {
+        $current_user_id = $this->Auth->user('id');
         // マイページから予約をキャンセルする際の処理
         if ($this->request->is('post')) {
             $reservation_id = $this->request->getData(['reservation_id']);
             $cancelled_reservation = $this->Reservations->get($reservation_id);
 
-            $cancelled_reservation->is_cancelled = true;
-            if ($this->Reservations->save($cancelled_reservation)) {
-                return $this->redirect(['action' => 'cancelled']);
+            //  ログイン中のユーザによる予約のみキャンセルを許可する 
+            if ($cancelled_reservation->user_id === $current_user_id) {
+                $cancelled_reservation->is_cancelled = true;
+                if ($this->Reservations->save($cancelled_reservation)) {
+                    return $this->redirect(['action' => 'cancelled']);
+                } else {
+                    $this->Flash->error('処理が正常に完了しませんでした。');
+                    return $this->redirect(['action' => 'detail']);
+                }
             } else {
-                $this->Flash->error('処理が正常に完了しませんでした。');
+                // 他ユーザによる予約をキャンセルしようとした際はエラーを表示させる
+                $this->Flash->error('他ユーザの予約情報はキャンセル出来ません。');
                 return $this->redirect(['action' => 'detail']);
             }
         }
