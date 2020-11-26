@@ -189,7 +189,7 @@ class ReservationsController extends AppController
                 }
             } else {
                 // 他ユーザによる予約をキャンセルしようとした際はエラーを表示させる
-                $this->Flash->error('他ユーザの予約情報はキャンセル出来ません。');
+                $this->Flash->error('予約が存在しません。');
                 return $this->redirect(['action' => 'detail']);
             }
         }
