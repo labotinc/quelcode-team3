@@ -129,17 +129,18 @@
     text-align: center;
     color: #707070;
 }
-.reservations-cancel-button a {
-    position: absolute;
-    top: 48px;
-    right: 24px;
-    font-size: 12px;
-    color: #afafaf;
-    padding: 10px 18px;
-    border: 1.5px solid #afafaf;
+.reservations-cancel-button {
+  position: absolute;
+  top: 48px;
+  right: 24px;
+  font-size: 12px;
+  color: #AFAFAF;
+  padding: 10px 18px;
+  border: 1.5px solid #AFAFAF;
+  cursor: pointer;
 }
-.reservations-cancel-button a:hover {
-    background-color: #fff;
+.reservations-cancel-button:hover {
+  background-color: #fff;
 }
 .reservations-to-mypage-button a {
     background-color: #f5ae0b;
@@ -149,6 +150,9 @@
     font-size: 15px;
     color: #fff;
     letter-spacing: 0.44px;
+}
+.cancelled-to-mypage a {
+    width: 336px;
 }
 .reservations-to-mypage-button a:hover {
     box-shadow: 0px 2px 6px #00000056;
@@ -212,3 +216,14 @@
     color: #fff;
 }
 /*予約確認画面終了*/
+
+/* ここから予約キャンセル完了画面 */
+.cancelled-main {
+    padding-top: 144px;
+    margin-bottom: 329px;
+    text-align: center;
+}
+.cancelled-message {
+    color: #707070;
+    margin-bottom: 40px;
+}

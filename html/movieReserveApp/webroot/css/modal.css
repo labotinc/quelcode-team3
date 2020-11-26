@@ -1,0 +1,67 @@
+/* モーダルCSS */
+.modalArea {
+  margin: 0;
+  display: none;
+  position: fixed;
+  z-index: 2; /*サイトによってここの数値は調整 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.9);
+}
+
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  max-width: 736px;
+  padding: 120px 200px 68px 200px;
+  background-color: #fff;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  cursor: pointer;
+}
+.modal-inner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-message {
+  color: #707070;
+  font-size: 16px;
+  margin-bottom: 60px;
+}
+.abort {
+  margin-right: 16px;
+  padding: 16px 80px;
+  color: #fff;
+  background: #F5AE0B 0% 0% no-repeat padding-box;
+  cursor: pointer;
+}
+.abort:hover {
+  box-shadow: 0px 2px 6px #00000056;
+}
+.deletion-confirmed {
+  background: #EFEFEF 0% 0% no-repeat padding-box;
+  box-shadow: #00000014 0px 2px 2px;
+}
+.deletion-confirmed button {
+  color: #707070;
+  display: inline-block;
+  padding: 16px 48px;
+}
+.deletion-confirmed button:hover {
+  box-shadow: 0px 2px 6px #00000056;
+}
