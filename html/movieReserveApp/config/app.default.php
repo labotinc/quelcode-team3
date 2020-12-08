@@ -51,7 +51,7 @@ return [
         'namespace' => 'App',
         'encoding' => env('APP_ENCODING', 'UTF-8'),
         'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
-        'defaultTimezone' => env('APP_DEFAULT_TIMEZONE', 'UTC'),
+        'defaultTimezone' => env('APP_DEFAULT_TIMEZONE', 'Asia/Tokyo'),
         'base' => false,
         'dir' => 'src',
         'webroot' => 'webroot',
@@ -76,7 +76,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', '3e1514149014666deb24d8b9bf409e137087f41d973aa09fbf08da9ed1bb9eb1'),
     ],
 
     /**
@@ -177,7 +177,7 @@ return [
      *   breathing room to complete logging or error handling.
      */
     'Error' => [
-        'errorLevel' => E_ALL,
+        'errorLevel' => env('ERROR_LEVEL',E_ALL),
         'exceptionRenderer' => ExceptionRenderer::class,
         'skipLog' => [],
         'log' => true,
@@ -256,21 +256,21 @@ return [
             'className' => Connection::class,
             'driver' => Mysql::class,
             'persistent' => false,
-            'host' => 'localhost',
+            'host' => env('DATABASE_HOST','mysql'),
             /*
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
-            'database' => 'my_app',
+            'username' => env('DATABASE_USER','docker_db_user'),
+            'password' => env('DATABASE_PASSWORD','docker_db_user_pass'),
+            'database' => env('DATABASE_NAME','docker_db'),
             /*
              * You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
              */
             //'encoding' => 'utf8mb4',
-            'timezone' => 'UTC',
+            'timezone' => 'Asia/Tokyo',
             'flags' => [],
             'cacheMetadata' => true,
             'log' => false,
