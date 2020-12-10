@@ -18,7 +18,10 @@ RUN apt-get update \
   && apt-get install -y vim \
   && apt-get install -y nodejs \
   && apt-get install -y libicu-dev \
-  && docker-php-ext-install pdo_mysql intl mbstring
+  && apt-get install -y libmemcached-dev
+RUN pecl install memcached
+RUN docker-php-ext-enable memcacheds
+RUN docker-php-ext-install pdo_mysql intl mbstring
 
 # ユーザ作成
 RUN useradd -m ${DOCKER_USER} -u ${DOCKER_UID}
