@@ -1,6 +1,7 @@
 <?php
 
 use Cake\Cache\Engine\FileEngine;
+use Cake\Cache\Engine\MemcachedEngine;
 use Cake\Database\Connection;
 use Cake\Database\Driver\Mysql;
 use Cake\Error\ExceptionRenderer;
@@ -97,9 +98,8 @@ return [
      */
     'Cache' => [
         'default' => [
-            'className' => FileEngine::class,
-            'path' => CACHE,
-            'url' => env('CACHE_DEFAULT_URL', null),
+            'className' => MemcachedEngine::class,
+            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
         ],
 
         /**
@@ -109,12 +109,10 @@ return [
          * If you set 'className' => 'Null' core cache will be disabled.
          */
         '_cake_core_' => [
-            'className' => FileEngine::class,
+            'className' => MemcachedEngine::class,
+            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
             'prefix' => 'myapp_cake_core_',
-            'path' => CACHE . 'persistent/',
-            'serialize' => true,
             'duration' => '+1 years',
-            'url' => env('CACHE_CAKECORE_URL', null),
         ],
 
         /**
@@ -124,12 +122,10 @@ return [
          * Duration will be set to '+2 minutes' in bootstrap.php when debug = true
          */
         '_cake_model_' => [
-            'className' => FileEngine::class,
+            'className' => MemcachedEngine::class,
+            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
             'prefix' => 'myapp_cake_model_',
-            'path' => CACHE . 'models/',
-            'serialize' => true,
             'duration' => '+1 years',
-            'url' => env('CACHE_CAKEMODEL_URL', null),
         ],
 
         /**
@@ -138,12 +134,10 @@ return [
          * Duration will be set to '+2 seconds' in bootstrap.php when debug = true
          */
         '_cake_routes_' => [
-            'className' => FileEngine::class,
+            'className' => MemcachedEngine::class,
+            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
             'prefix' => 'myapp_cake_routes_',
-            'path' => CACHE,
-            'serialize' => true,
             'duration' => '+1 years',
-            'url' => env('CACHE_CAKEROUTES_URL', null),
         ],
     ],
 
@@ -389,6 +383,6 @@ return [
      * To use database sessions, load the SQL file located at config/schema/sessions.sql
      */
     'Session' => [
-        'defaults' => 'php',
+        'defaults' => 'cache',
     ],
 ];
