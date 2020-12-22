@@ -99,7 +99,7 @@ return [
     'Cache' => [
         'default' => [
             'className' => MemcachedEngine::class,
-            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
+            'servers' => [env('MEMCACHED_HOST', 'memcached') . ':' . env('MEMCACHED_PORT' ,'11211')],
         ],
 
         /**
@@ -110,7 +110,7 @@ return [
          */
         '_cake_core_' => [
             'className' => MemcachedEngine::class,
-            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
+            'servers' => [env('MEMCACHED_HOST', 'memcached') . ':' . env('MEMCACHED_PORT' ,'11211')],
             'prefix' => 'myapp_cake_core_',
             'duration' => '+1 years',
         ],
@@ -123,7 +123,7 @@ return [
          */
         '_cake_model_' => [
             'className' => MemcachedEngine::class,
-            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
+            'servers' => [env('MEMCACHED_HOST', 'memcached') . ':' . env('MEMCACHED_PORT' ,'11211')],
             'prefix' => 'myapp_cake_model_',
             'duration' => '+1 years',
         ],
@@ -135,7 +135,7 @@ return [
          */
         '_cake_routes_' => [
             'className' => MemcachedEngine::class,
-            "servers" => [env("MEMCACHED_HOST", "memcached") . ":" . env("MEMCACHED_PORT" ,"11211")],
+            'servers' => [env('MEMCACHED_HOST', 'memcached') . ':' . env('MEMCACHED_PORT' ,'11211')],
             'prefix' => 'myapp_cake_routes_',
             'duration' => '+1 years',
         ],
