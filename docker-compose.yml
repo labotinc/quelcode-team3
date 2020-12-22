@@ -1,5 +1,11 @@
 version: '3'
 services:
+  memcached:
+    image: memcached
+    container_name: memcached
+    ports:
+        - 11211:11211
+        
   nginx:
     image: nginx
     ports:

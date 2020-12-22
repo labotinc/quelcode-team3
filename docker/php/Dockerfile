@@ -18,6 +18,10 @@ RUN apt-get update \
   && apt-get install -y vim \
   && apt-get install -y nodejs \
   && apt-get install -y libicu-dev \
+  && apt-get install -y libmemcached-dev \
+  && apt-get install -y libz-dev \
+  && pecl install memcached \
+  && docker-php-ext-enable memcached \
   && docker-php-ext-install pdo_mysql intl mbstring
 
 # ユーザ作成
