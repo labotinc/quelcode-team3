@@ -1,6 +1,5 @@
 FROM php:7.3-fpm
 
-EXPOSE 9000
 # 変数を宣言する
 ARG DOCKER_UID=${DOCKER_UID}
 ARG DOCKER_USER=docker
@@ -31,10 +30,5 @@ RUN usermod -aG sudo ${DOCKER_USER}
 # 作成したユーザーに切り替える
 USER ${DOCKER_USER}
 
-COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
-COPY /var/www/html/movieReserveApp /var/www/html
-
 # 作業ディレクトリを変更
-WORKDIR /var/www/html/movieReserveApp
-
-RUN composer install
+WORKDIR /var/www/html
